@@ -8,3 +8,7 @@ class ServiceListView(generic.ListView):
     template_name = 'services/service_list.html'
     context_object_name = 'services'
     
+class ServiceDetailView(generic.DetailView):
+    model = models.ServicesModel
+    template_name = 'services/service_detail.html'
+    context_object_name = 'service'

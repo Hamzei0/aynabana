@@ -9,8 +9,9 @@
 
 <body>
     {% for service in services %}
-        <h1>{{service.title}}</h1>
+        <h1><a href="{{service.get_absolute_url}}">{{service.title}}</a></h1>
         <p>{{service.short_description}}</p>
+        <p>_____________________________</p>
     {% endfor %}
 </body>
 
