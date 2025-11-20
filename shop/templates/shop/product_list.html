@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     {% for product in products %}
-    {{product.title}}<br>
-    {{product.short_description}}<br>
-    {{product.price}}<br>
-    <p>____________________</p><br>
+      <a href="{{ product.get_absolute_url }}">{{ product.title }}</a><br />
+      {{ product.short_description }}<br />
+      {{ product.price }}<br />
+      <p>____________________</p><br />
     {% endfor %}
-</body>
+  </body>
 </html>
