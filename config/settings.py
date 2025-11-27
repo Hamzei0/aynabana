@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'services.apps.ServicesConfig',
     'shop.apps.ShopConfig',
+    'cart.apps.CartConfig',
     
     #third party
     
