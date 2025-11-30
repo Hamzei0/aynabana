@@ -6,6 +6,8 @@
     <title>Document</title>
   </head>
   <body>
+    <a href="{% url 'home' %}">خانه</a><br>
+
     {% for product in products %}
       <a href="{{ product.get_absolute_url }}">{{ product.title }}</a><br />
       {{ product.short_description }}<br />

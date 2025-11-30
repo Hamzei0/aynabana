@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <a href="{% url 'home' %}">خانه</a>
     {% for service in services %}
         <h1><a href="{{service.get_absolute_url}}">{{service.title}}</a></h1>
         <p>{{service.short_description}}</p>

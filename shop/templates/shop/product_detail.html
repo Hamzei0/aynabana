@@ -6,10 +6,24 @@
     <title>Document</title>
   </head>
   <body>
+    <a href="{% url 'home' %}">خانه</a>
+
     <h1>{{ product.title }}</h1>
     <p>{{ product.short_description }}</p>
     <p>{{ product.full_description }}</p>
     <h4>{{ product.price }}</h4>
     <h5>{{ product.datetime_modified }}</h5>
+    <p>___________________________________</p>
+
+    <h1>comments</h1>
+    {% for comment in product.comments.all %}
+      {% if comment.active %}
+        <p>___________________________________</p>
+        <h5>{{ comment.author }}</h5>
+        <h6>{{ comment.stars }}</h6>
+        <p>{{ comment.text }}</p>
+        <h6>{{ comment.datetime_modified }}</h6>
+      {% endif %}
+    {% endfor %}
   </body>
 </html>
