@@ -17,5 +17,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(models.CommentProduct)
 class CommentProductAdmin(admin.ModelAdmin):
-    list_display = ['author','product','text','active','stars']
+    list_display = ['author','product','text','stars','active']
     

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-01 15:06+0330\n"
-"PO-Revision-Date: 2025-12-01 15:20+0330\n"
+"POT-Creation-Date: 2025-12-01 22:00+0330\n"
+"PO-Revision-Date: 2025-12-01 22:04+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,66 +19,94 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\models.py:13
+#: .\models.py:14
 msgid "title"
 msgstr "عنوان"
 
-#: .\models.py:14
+#: .\models.py:15
 msgid "short description"
 msgstr "توضیخات کوتاه"
 
-#: .\models.py:15
+#: .\models.py:16
 msgid "full description"
 msgstr "توضیحات بلند"
 
-#: .\models.py:17
+#: .\models.py:18
 msgid "price"
 msgstr "قیمت"
 
-#: .\models.py:18 .\models.py:57
+#: .\models.py:19 .\models.py:62
 msgid "active"
 msgstr "وضعیت"
 
-#: .\models.py:20
+#: .\models.py:21
 msgid "length"
 msgstr "طول"
 
-#: .\models.py:21
+#: .\models.py:22
 msgid "width"
 msgstr "عرض"
 
-#: .\models.py:22
+#: .\models.py:23
 msgid "height"
 msgstr "ارتفاع"
 
-#: .\models.py:24 .\models.py:65
+#: .\models.py:25 .\models.py:70
 msgid "datetime created"
 msgstr "تاریخ ساخت"
 
-#: .\models.py:25 .\models.py:66
+#: .\models.py:26 .\models.py:71
 msgid "datetime modified"
 msgstr "تاریخ اخرین تغییرات"
 
-#: .\models.py:47
-msgid "product"
+#: .\models.py:29
+msgid "Product"
+msgstr "محصول"
+
+#: .\models.py:30
+msgid "Products"
 msgstr "محصولات"
 
-#: .\models.py:53
+#: .\models.py:41
+msgid "very bad"
+msgstr "خیلی بد"
+
+#: .\models.py:42
+msgid "bad"
+msgstr "بد"
+
+#: .\models.py:43
+msgid "normal"
+msgstr "معمولی"
+
+#: .\models.py:44
+msgid "good"
+msgstr "خوب"
+
+#: .\models.py:45
+msgid "perfect"
+msgstr "عالی"
+
+#: .\models.py:52
+msgid "product"
+msgstr "محصول"
+
+#: .\models.py:58
 msgid "author"
 msgstr "نویسنده"
 
-#: .\models.py:56
+#: .\models.py:61
 msgid "text"
 msgstr "متن"
 
-#: .\models.py:61
+#: .\models.py:66
 msgid "stars"
 msgstr "امتیاز"
 
-#: .\models.py:73
+#: .\models.py:78
 msgid "CommentProduct"
 msgstr "کامنت محصولات"
 
-#: .\models.py:74
+#: .\models.py:79
 msgid "CommentProducts"
 msgstr "کامنت های محصولات"
