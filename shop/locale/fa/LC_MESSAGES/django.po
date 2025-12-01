@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-01 15:06+0330\n"
+"PO-Revision-Date: 2025-12-01 15:20+0330\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\models.py:13
+msgid "title"
+msgstr "عنوان"
+
+#: .\models.py:14
+msgid "short description"
+msgstr "توضیخات کوتاه"
+
+#: .\models.py:15
+msgid "full description"
+msgstr "توضیحات بلند"
+
+#: .\models.py:17
+msgid "price"
+msgstr "قیمت"
+
+#: .\models.py:18 .\models.py:57
+msgid "active"
+msgstr "وضعیت"
+
+#: .\models.py:20
+msgid "length"
+msgstr "طول"
+
+#: .\models.py:21
+msgid "width"
+msgstr "عرض"
+
+#: .\models.py:22
+msgid "height"
+msgstr "ارتفاع"
+
+#: .\models.py:24 .\models.py:65
+msgid "datetime created"
+msgstr "تاریخ ساخت"
+
+#: .\models.py:25 .\models.py:66
+msgid "datetime modified"
+msgstr "تاریخ اخرین تغییرات"
+
+#: .\models.py:47
+msgid "product"
+msgstr "محصولات"
+
+#: .\models.py:53
+msgid "author"
+msgstr "نویسنده"
+
+#: .\models.py:56
+msgid "text"
+msgstr "متن"
+
+#: .\models.py:61
+msgid "stars"
+msgstr "امتیاز"
+
+#: .\models.py:73
+msgid "CommentProduct"
+msgstr "کامنت محصولات"
+
+#: .\models.py:74
+msgid "CommentProducts"
+msgstr "کامنت های محصولات"
