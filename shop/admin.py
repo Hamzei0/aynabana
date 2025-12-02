@@ -19,3 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
 class CommentProductAdmin(admin.ModelAdmin):
     list_display = ['author','product','text','stars','active']
     
+@admin.register(models.ProductImage)
+class ProductImageAdmin(admin.ModelAdmin):
+    list_display = ['product','image']    
+    

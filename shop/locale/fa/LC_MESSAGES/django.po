@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-01 22:00+0330\n"
-"PO-Revision-Date: 2025-12-01 22:04+0330\n"
+"POT-Creation-Date: 2025-12-02 16:36+0330\n"
+"PO-Revision-Date: 2025-12-02 16:37+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -87,7 +87,7 @@ msgstr "خوب"
 msgid "perfect"
 msgstr "عالی"
 
-#: .\models.py:52
+#: .\models.py:52 .\models.py:90
 msgid "product"
 msgstr "محصول"
 
@@ -110,3 +110,17 @@ msgstr "کامنت محصولات"
 #: .\models.py:79
 msgid "CommentProducts"
 msgstr "کامنت های محصولات"
+
+#: .\models.py:95
+msgid "image"
+msgstr "تصویر"
+
+#: .\models.py:99
+#| msgid "Product"
+msgid "ProductImage"
+msgstr "عکس محصول"
+
+#: .\models.py:100
+#| msgid "Products"
+msgid "ProductImages"
+msgstr "عکس محصولات"

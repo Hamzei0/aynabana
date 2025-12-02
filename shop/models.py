@@ -30,7 +30,7 @@ class Products(models.Model):
         verbose_name_plural = _('Products')
     
     def __str__(self):
-        return self.title
+        return str(self.title)
     
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.pk])
@@ -81,3 +81,24 @@ class CommentProduct(models.Model):
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.product.id])
      
+class ProductImage(models.Model):
+    
+    product = models.ForeignKey(
+        Products, 
+        on_delete=models.CASCADE, 
+        related_name='images',
+        verbose_name=_('product'),
+        )
+    image = models.ImageField(
+        upload_to='product/product_cover', 
+        blank=True, 
+        verbose_name=_('image')
+        )
+    
+    class Meta:
+        verbose_name = _('ProductImage')
+        verbose_name_plural = _('ProductImages')
+    
+    def __str__(self):
+        return str(self.product)
+    
