@@ -90,7 +90,7 @@ class ProductImage(models.Model):
         verbose_name=_('product'),
         )
     image = models.ImageField(
-        upload_to='product/product_cover', 
+        upload_to='product/product_image', 
         blank=True, 
         verbose_name=_('image')
         )

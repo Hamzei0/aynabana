@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-01 21:48+0330\n"
-"PO-Revision-Date: 2025-12-01 21:55+0330\n"
+"POT-Creation-Date: 2025-12-02 17:14+0330\n"
+"PO-Revision-Date: 2025-12-02 17:15+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -34,3 +34,22 @@ msgstr "توضیحات کامل"
 #: .\models.py:12 .\models.py:13
 msgid "Services"
 msgstr "خدمات"
+
+#: .\models.py:27
+#| msgid "Services"
+msgid "service"
+msgstr "خدمات"
+
+#: .\models.py:32
+msgid "image"
+msgstr "تصویر"
+
+#: .\models.py:36
+#| msgid "Services"
+msgid "ServiceImage"
+msgstr "تصویر خدمات"
+
+#: .\models.py:37
+#| msgid "Services"
+msgid "ServiceImages"
+msgstr "تصاویر خدمات"

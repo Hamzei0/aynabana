@@ -17,5 +17,25 @@ class ServicesModel(models.Model):
     
     def get_absolute_url(self):
         return reverse('service_detail', args={self.pk})
-
+    
+class ServicesImage(models.Model):
+    
+    service = models.ForeignKey(
+        ServicesModel,
+        on_delete=models.CASCADE,
+        related_name='images',
+        verbose_name=_('service'),
+        )
+    image = models.ImageField(
+        upload_to='service/service_image', 
+        blank=True, 
+        verbose_name=_('image')
+        )
+    
+    class Meta:
+        verbose_name = _('ServiceImage')
+        verbose_name_plural = _('ServiceImages')
+    
+    def __str__(self):
+        return str(self.service)
     

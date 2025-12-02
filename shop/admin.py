@@ -2,6 +2,12 @@ from django.contrib import admin
 
 from . import models
 
+
+class ProductImagesInLine(admin.TabularInline):
+    model = models.ProductImage
+    fields = ['image',]
+    extra = 1
+
 class CommentsInLine(admin.TabularInline):
     model = models.CommentProduct
     fields = ['text','author','stars','active']
@@ -13,6 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
     
     inlines = [
         CommentsInLine,
+        ProductImagesInLine,
     ]
 
 @admin.register(models.CommentProduct)
