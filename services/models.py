@@ -32,6 +32,9 @@ class ServicesImage(models.Model):
         verbose_name=_('image')
         )
     
+    datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('datetime created'))
+    datetime_modified = models.DateTimeField(auto_now=True, verbose_name=_('datetime modified'))
+
     class Meta:
         verbose_name = _('ServiceImage')
         verbose_name_plural = _('ServiceImages')

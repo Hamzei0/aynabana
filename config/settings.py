@@ -171,9 +171,8 @@ LOGOUT_REDIRECT_URL = 'home'
 
 #DJANGO all auth
 ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 
 #Media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
