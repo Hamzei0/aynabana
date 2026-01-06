@@ -1,17 +1,98 @@
-<!DOCTYPE html>
+{% extends '_base.html' %}
+
+{% block title %}
+  login / signup
+{% endblock %}
+
+{% block body %}
+  <!-- Auth Page -->
+  <section class="pt-5 mt-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="glass-card p-5 auth-box">
+            <!-- Tabs -->
+            <div class="d-flex justify-content-center mb-4 auth-tabs">
+              <button class="auth-tab active" data-target="login">ورود</button>
+              <button class="auth-tab" data-target="signup">ثبت‌نام</button>
+            </div>
+
+            <!-- Login -->
+            <div class="auth-form login-form">
+              <h4 class="fw-bold mb-4 text-center">ورود به حساب کاربری</h4>
+
+              <form action="{% url 'account_login' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label class="form-label">ایمیل | نام کاربری</label>
+                  <input name="login" type="text" class="form-control glass-input" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">رمز عبور</label>
+                  <input name="password" type="password" class="form-control glass-input" required />
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="rememberMe" />
+                  <label class="form-check-label opacity-75" for="rememberMe">مرا به خاطر بسپار</label>
+                </div>
+
+                <button type="submit" class="btn btn-glass w-100 mt-3">ورود</button>
+
+                <div class="text-center mt-3 opacity-75 small">رمز عبور را فراموش کرده‌اید؟</div>
+              </form>
+            </div>
+
+            <!-- Signup -->
+            <div class="auth-form signup-form d-none">
+              <h4 class="fw-bold mb-4 text-center">ایجاد حساب کاربری</h4>
+
+              <form action="{% url 'account_signup' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label class="form-label">نام کاربری</label>
+                  <input name="username" type="text" class="form-control glass-input" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">ایمیل</label>
+                  <input name="email" type="email" class="form-control glass-input" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">رمز عبور</label>
+                  <input name="password1" type="password" class="form-control glass-input" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">تکرار رمز عبور</label>
+                  <input name="password2" type="password" class="form-control glass-input" required />
+                </div>
+
+                <button type="submit" class="btn btn-glass w-100 mt-3">ثبت‌نام</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% comment %} <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <form action="{% url 'account_login' %}" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">login</button>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">login</button>
     </form>
     <h5><a href="{% url 'home' %}">home</a></h5>
     <h5><a href="{% url 'account_signup' %}">signup</a></h5>
-</body>
-</html>
+  </body>
+</html> {% endcomment %}

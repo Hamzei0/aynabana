@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+
+{% block title %}
+  page not found
+{% endblock %}
+
+{% block body %}
+  <section class="vh-100 d-flex align-items-center justify-content-center position-relative overflow-hidden">
+    <!-- پس‌زمینه نورپردازی -->
+    <div class="bg-lighting"></div>
+
+    <div class="glass-card text-center p-5 position-relative" style="max-width: 500px; width: 90%; z-index: 10;">
+      <h1 class="display-1 fw-bold text-white mb-4 animated-404">404</h1>
+      <h3 class="fw-bold text-white mb-3">صفحه مورد نظر یافت نشد!</h3>
+      <p class="opacity-75 mb-4">صفحه‌ای که دنبال آن هستید ممکن است حذف شده باشد، نام آن تغییر کرده باشد یا موقتاً در دسترس نباشد.</p>
+      <a href="{% url 'home' %}" class="btn btn-glass px-5">بازگشت به صفحه اصلی</a>
+    </div>
+  </section>
+{% endblock %}
