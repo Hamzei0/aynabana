@@ -1,20 +1,203 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Home</h1>
-    <a href="{% url 'service_list' %}">خدمات ما</a>
-    <a href="{% url 'product_list' %}">فروشگاه</a>
-    {% if user.is_authenticated %}
-      <p>hello {{ user.username }}!</p>
-      <h5><a href="{% url 'account_logout' %}">logout</a></h5>
-    {% else %}
-      <h5><a href="{% url 'account_login' %}">login</a></h5>
-      <h5><a href="{% url 'account_signup' %}">signup</a></h5>
-    {% endif %}
-  </body>
-</html>
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block body %}
+  <section class="slider-sec mt-5">
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide active">
+          <div class="parallax-wrapper">
+            <img src="{% static 'img/Home-renovation-1536x864-1.jpeg' %}" alt="Slide 1" class="slide-image" />
+            <div class="slide-content text-light">
+              <h2>عنوان اسلاید اول</h2>
+              <p>توضیحات اسلاید اول</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="parallax-wrapper">
+            <img src="{% static 'img/city_bright_4.jpg' %}" alt="Slide 2" class="slide-image" />
+            <div class="slide-content text-light">
+              <h2>عنوان اسلاید دوم</h2>
+              <p>توضیحات اسلاید دوم</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="parallax-wrapper">
+            <img src="{% static 'img/home-525x328.jpg' %}" alt="Slide 3" class="slide-image" />
+            <div class="slide-content text-light">
+              <h2>عنوان اسلاید سوم</h2>
+              <p>توضیحات اسلاید سوم</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="parallax-wrapper">
+            <img src="{% static 'img/decor2-525x328.jpg' %}" alt="Slide 4" class="slide-image" />
+            <div class="slide-content text-light">
+              <h2>عنوان اسلاید چهارم</h2>
+              <p>توضیحات اسلاید چهارم</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- دکمه‌های کنترل -->
+      <button class="slider-btn prev-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      </button>
+      <button class="slider-btn next-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+      </button>
+
+      <!-- نقاط راهنما -->
+      <div class="slider-dots"></div>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="vh-100 d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-12">
+          <div class="glass-card p-5">
+            <h1 class="fw-bold mb-3">فروش تخصصی آینه و خدمات بازسازی</h1>
+            <p class="opacity-75">طراحی، فروش و اجرای انواع آینه‌های دکوراتیو همراه با خدمات حرفه‌ای بازسازی فضا</p>
+
+            <div class="d-flex gap-3 mt-4 flex-wrap">
+              <a href="{% url 'product_list' %}" class="btn btn-glass">ورود به فروشگاه</a>
+              <a href="{% url 'product_list' %}" class="btn btn-outline-light rounded-pill px-4">مشاوره بازسازی</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 position-absolute end-0 text-center">
+          <div class="glass-blob mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="glass-card p-5">
+        <div class="row align-items-center gy-4">
+          <div class="col-md-6">
+            <h2 class="fw-bold">فروشگاه آینه</h2>
+            <p class="opacity-75 mt-3">انواع آینه‌های دکوراتیو، مدرن و سفارشی مناسب فضاهای مسکونی و تجاری</p>
+            <a href="{% url 'product_list' %}" class="btn btn-glass mt-3">مشاهده محصولات</a>
+          </div>
+          <div class="col-md-6 text-center">
+            <img src="{% static 'img/images.png' %}" alt="" class="glass-img-placeholder" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Renovation -->
+  <section class="py-5">
+    <div class="container">
+      <div class="glass-card p-5">
+        <div class="row align-items-center gy-4 flex-md-row-reverse">
+          <div class="col-md-6">
+            <h2 class="fw-bold">خدمات بازسازی</h2>
+            <p class="opacity-75 mt-3">بازسازی صفر تا صد منازل و فضاهای تجاری با طراحی مدرن و متریال باکیفیت</p>
+            <a href="{% url 'service_list' %}" class="btn btn-glass mt-3">درخواست بازدید</a>
+          </div>
+          <div class="col-md-6 text-center">
+            <img src="{% static 'img/repair.png' %}" alt="" class="glass-img-placeholder" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="py-5">
+    <div class="container">
+      <div class="glass-card p-5 row">
+        <div class="col-md-6">
+          <h2 class="fw-bold mb-3 border-bottom pb-3">راه‌های ارتباطی</h2>
+          <p class="opacity-75">
+            <i class="bi bi-geo text-info"></i> - تهران . پیروزی پلاک 6
+          </p>
+          <p class="opacity-75">
+            <i class="bi bi-telephone text-info"></i> - 021-7788554456
+          </p>
+          <p class="opacity-75">
+            <i class="bi bi-phone text-info"></i> - +98-910260125
+          </p>
+          <p class="opacity-75">
+            <i class="bi bi-envelope text-info"></i> - +98-910260125
+          </p>
+        </div>
+        <div id="map" class="col-md-6 map-placeholder text-center opacity-50 p-5"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-5">
+    <div class="container">
+      <div class="glass-card p-5">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">سوالات متداول</h2>
+          <p class="opacity-75 mt-2">پاسخ به پرسش‌های رایج مشتریان درباره فروش آینه و خدمات بازسازی</p>
+        </div>
+
+        <div class="accordion faq-accordion" id="faqAccordion">
+          <!-- Item -->
+          <div class="accordion-item glass-faq">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq1">زمان آماده‌سازی و ارسال آینه چقدر است؟</button></h2>
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body opacity-75">آینه‌های آماده معمولاً بین ۳ تا ۵ روز کاری و آینه‌های سفارشی بین ۷ تا ۱۰ روز کاری آماده و ارسال می‌شوند.</div>
+            </div>
+          </div>
+
+          <!-- Item -->
+          <div class="accordion-item glass-faq">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">آیا امکان سفارش آینه با سایز دلخواه وجود دارد؟</button></h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body opacity-75">بله، تمامی آینه‌ها قابلیت سفارش در ابعاد، ضخامت و نوع لبه دلخواه شما را دارند.</div>
+            </div>
+          </div>
+
+          <!-- Item -->
+          <div class="accordion-item glass-faq">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">خدمات بازسازی شامل چه مواردی می‌شود؟</button></h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body opacity-75">خدمات بازسازی شامل تغییر دکوراسیون داخلی، طراحی و اجرای کابینت، کناف‌کاری دیوار و سقف و اجرای نورپردازی مدرن می‌باشد.</div>
+            </div>
+          </div>
+
+          <!-- Item -->
+          <div class="accordion-item glass-faq">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4">آیا قبل از بازسازی بازدید انجام می‌شود؟</button></h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body opacity-75">بله، قبل از شروع پروژه بازسازی، بازدید و مشاوره اولیه به‌صورت رایگان انجام می‌شود.</div>
+            </div>
+          </div>
+
+          <!-- Item -->
+          <div class="accordion-item glass-faq">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq5">آیا محصولات شامل گارانتی هستند؟</button></h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body opacity-75">بله، تمامی آینه‌ها و خدمات اجرا شده دارای ضمانت کیفیت و سلامت می‌باشند.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

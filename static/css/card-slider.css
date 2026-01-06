@@ -1,0 +1,271 @@
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    height: 80vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    perspective: 1500px;
+}
+
+.slide {
+    position: absolute;
+    width: 60%;
+    height: 80%;
+    top: 10%;
+    left: 20%;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* اسلاید اصلی (مرکز) */
+.slide.active {
+    width: 70%;
+    height: 90%;
+    top: 5%;
+    left: 15%;
+    z-index: 10;
+    transform: scale(1) translateX(0);
+}
+
+/* اسلاید قبلی */
+.slide.prev {
+    transform: scale(0.85) translateX(-85%);
+    z-index: 5;
+    opacity: 0.7;
+    filter: brightness(0.6) blur(1px);
+}
+
+/* اسلاید بعدی */
+.slide.next {
+    transform: scale(0.85) translateX(85%);
+    z-index: 5;
+    opacity: 0.7;
+    filter: brightness(0.6) blur(1px);
+}
+
+/* اسلایدهای دورتر */
+.slide.far-prev {
+    transform: scale(0.7) translateX(-150%);
+    z-index: 1;
+    opacity: 0.4;
+    filter: brightness(0.4) blur(2px);
+}
+
+.slide.far-next {
+    transform: scale(0.7) translateX(150%);
+    z-index: 1;
+    opacity: 0.4;
+    filter: brightness(0.4) blur(2px);
+}
+
+.parallax-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    max-width: 500px;
+    z-index: 20;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s ease 0.3s;
+}
+
+.slide.active .slide-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+/* دکمه‌های کنترل */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 5%;
+}
+
+.next-btn {
+    right: 5%;
+}
+
+/* نقاط راهنما */
+.slider-dots {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 100;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.2);
+}
+
+/* overlay برای خوانایی بهتر متن */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.8) 0%,
+        rgba(0,0,0,0.4) 50%,
+        transparent 100%
+    );
+    z-index: 1;
+    border-radius: 20px;
+}
+
+/* ریسپانسیو */
+@media (max-width: 1024px) {
+    .slider-container {
+        height: 70vh;
+    }
+    
+    .slide {
+        width: 70%;
+        left: 15%;
+    }
+    
+    .slide.active {
+        width: 80%;
+        left: 10%;
+    }
+    
+    .slide.prev {
+        transform: scale(0.8) translateX(-95%);
+    }
+    
+    .slide.next {
+        transform: scale(0.8) translateX(95%);
+    }
+    
+    .prev-btn {
+        left: 2%;
+    }
+    
+    .next-btn {
+        right: 2%;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        height: 60vh;
+    }
+    
+    .slide {
+        width: 80%;
+        left: 10%;
+    }
+    
+    .slide.active {
+        width: 90%;
+        left: 5%;
+    }
+    
+    .slide.prev,
+    .slide.next {
+        opacity: 0.3;
+    }
+    
+    .slide-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+    }
+    
+    .slider-btn {
+        width: 50px;
+        height: 50px;
+    }
+}

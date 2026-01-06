@@ -1,11 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>about us</h2>
-</body>
-</html>
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block title %}
+  about us
+{% endblock %}
+
+{% block body %}
+  <section class="pt-5 mt-5">
+    <div class="container">
+      <!-- Intro -->
+      <div class="glass-card p-5 text-center mb-5">
+        <h1 class="fw-bold">درباره ما</h1>
+        <p class="opacity-75 mt-3">ترکیبی از هنر، کیفیت و تجربه در طراحی دکوراسیون و تولید آینه‌های مدرن</p>
+      </div>
+
+      <!-- Who We Are -->
+      <div class="row g-5 align-items-center mb-5">
+        <div class="col-lg-6">
+          <div class="glass-card p-4 h-100">
+            <h4 class="fw-bold mb-3">ما که هستیم؟</h4>
+            <p class="opacity-75 lh-lg">ما یک مجموعه تخصصی در زمینه طراحی، تولید و فروش آینه‌های مدرن و همچنین ارائه خدمات بازسازی و دکوراسیون داخلی هستیم. تمرکز ما بر کیفیت اجرا، طراحی به‌روز و رضایت کامل مشتریان است.</p>
+            <p class="opacity-75 lh-lg">از پروژه‌های کوچک مسکونی تا فضاهای تجاری، همراه شما هستیم از ایده تا اجرا.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="glass-card p-4 h-100 text-center">
+            <div class="about-highlight">
+              <h2 class="fw-bold">+10</h2>
+              <p class="opacity-75">سال تجربه کاری</p>
+            </div>
+            <div class="about-highlight mt-4">
+              <h2 class="fw-bold">+500</h2>
+              <p class="opacity-75">پروژه موفق</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="glass-card p-5 mb-5">
+        <h3 class="fw-bold text-center mb-4">ارزش‌های ما</h3>
+
+        <div class="row g-4 text-center">
+          <div class="col-md-4">
+            <div class="value-box">
+              <div class="value-icon">✨</div>
+              <h6 class="fw-bold mt-3">کیفیت بالا</h6>
+              <p class="opacity-75 small mt-2">استفاده از بهترین متریال و اجرای دقیق</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="value-box">
+              <div class="value-icon">🎯</div>
+              <h6 class="fw-bold mt-3">تعهد به مشتری</h6>
+              <p class="opacity-75 small mt-2">رضایت مشتری اولویت اصلی ماست</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="value-box">
+              <div class="value-icon">🛠</div>
+              <h6 class="fw-bold mt-3">اجرای حرفه‌ای</h6>
+              <p class="opacity-75 small mt-2">تیم متخصص و با تجربه در اجرا</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="glass-card p-5 text-center">
+        <h3 class="fw-bold mb-3">آماده همکاری با ما هستید؟</h3>
+        <p class="opacity-75 mb-4">برای مشاوره یا ثبت سفارش همین حالا با ما تماس بگیرید</p>
+        <a href="{% url 'about_us' %}" class="btn btn-glass px-5">ارتباط با ما</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

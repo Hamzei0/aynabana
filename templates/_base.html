@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap-icon.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/card-slider.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/Map.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/fancybox.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold text-primary" href="#">MirrorArt</a>
+
+        <button class="navbar-toggler text-white border-primary py-2 border-start-0 border-end-0" data-bs-toggle="collapse" data-bs-target="#mainNav">☰</button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto gap-3">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">خانه</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'product_list' %}">محصولات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'service_list' %}">خدمات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about_us' %}">تماس</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about_us' %}">درباره ما</a>
+            </li>
+
+            <li class="d-block d-sm-none">
+              <div class="text-center py-2 main-menu-res">
+                <form action="" class="position-relative search-box">
+                  <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />
+                  <button class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
+                </form>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-sm-6 d-none d-sm-block text-center py-2 main-menu">
+          <form action="" class="position-relative search-box">
+            <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />
+            <button class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    {% block body %}
+
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="mt-5 pt-5 pb-3 glass-footer">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-md-4">
+            <h5 class="fw-bold">درباره ما</h5>
+            <p class="opacity-75 mt-3">ما با تمرکز بر طراحی مدرن و اجرای دقیق، تجربه‌ای متفاوت در فروش آینه و بازسازی ارائه می‌دهیم.</p>
+          </div>
+
+          <div class="col-md-4">
+            <h5 class="fw-bold">دسترسی سریع</h5>
+            <ul class="list-unstyled mt-3">
+              <li class="mb-3">
+                <a href="{% url 'product_list' %}" class="footer-link">فروشگاه</a>
+              </li>
+              <li class="mb-3">
+                <a href="{% url 'service_list' %}" class="footer-link">بازسازی</a>
+              </li>
+              <li class="mb-3">
+                <a href="{% url 'about_us' %}" class="footer-link">تماس با ما</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-4 text-md-end">
+            <h5 class="fw-bold">MirrorArt</h5>
+            <small class="opacity-75"><span style="opacity: 1; color: #ffff00;">ZynTaRa</span> © 2026 All Rights Reserved</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/jQuery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/slider-card.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/Map.js' %}"></script>
+    <script src="{% static 'js/eleventzoom.js' %}"></script>
+    <script src="{% static 'js/fancybox.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
+</html>
