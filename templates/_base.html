@@ -23,48 +23,50 @@
 
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
-      <div class="container-fluid px-4">
-        <a class="navbar-brand fw-bold text-primary" href="#">MirrorArt</a>
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+        <div class="container-fluid px-4">
+          <a class="navbar-brand fw-bold text-primary" href="#">MirrorArt</a>
 
-        <button class="navbar-toggler text-white border-primary py-2 border-start-0 border-end-0" data-bs-toggle="collapse" data-bs-target="#mainNav">☰</button>
+          <button class="navbar-toggler text-white border-primary py-2 border-start-0 border-end-0" data-bs-toggle="collapse" data-bs-target="#mainNav">☰</button>
 
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto gap-3">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">خانه</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'product_list' %}">محصولات</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'service_list' %}">خدمات</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about_us' %}">تماس</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about_us' %}">درباره ما</a>
-            </li>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto gap-3">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">خانه</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'product_list' %}">محصولات</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'service_list' %}">خدمات</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about_us' %}">تماس</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about_us' %}">درباره ما</a>
+              </li>
 
-            <li class="d-block d-sm-none">
-              <div class="text-center py-2 main-menu-res">
-                <form action="" class="position-relative search-box">
-                  <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />
-                  <button class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
-                </form>
-              </div>
-            </li>
-          </ul>
+              <li class="d-block d-sm-none">
+                <div class="text-center py-2 main-menu-res">
+                  <form action="" class="position-relative search-box">
+                    <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />
+                    <button class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-sm-6 d-none d-sm-block text-center py-2 main-menu">
+            <form action="" class="position-relative search-box">
+              <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />
+              <button class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
+            </form>
+          </div>
         </div>
-        <div class="col-lg-4 col-sm-6 d-none d-sm-block text-center py-2 main-menu">
-          <form action="" class="position-relative search-box">
-            <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />
-            <button class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
-          </form>
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
 
     {% block body %}
 
