@@ -1,18 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <a href="{% url 'home' %}">خانه</a><br>
+{% extends '_base.html' %}
 
-    {% for product in products %}
-      <a href="{{ product.get_absolute_url }}">{{ product.title }}</a><br />
-      {{ product.short_description }}<br />
-      {{ product.price }}<br />
-      <p>____________________</p><br />
-    {% endfor %}
-  </body>
-</html>
+{% load static %}
+
+{% block title %}
+  Product detail
+{% endblock %}
+
+{% block body %}
+  <!-- Shop Header -->
+  <section class="pt-5 mt-5">
+    <div class="container">
+      <div class="glass-card p-5 text-center">
+        <h1 class="fw-bold">فروشگاه آینه</h1>
+        <p class="opacity-75 mt-3">خرید انواع آینه‌های دکوراتیو، مدرن و سفارشی</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="py-4">
+    <div class="container">
+      <div class="glass-card p-4">
+        <div class="row gy-3 align-items-center">
+          <div class="col-md-4">
+            <select class="form-select bg-dark text-white border-secondary">
+              <option>همه مدل‌ها</option>
+              <option>دکوراتیو</option>
+              <option>مدرن</option>
+              <option>سفارشی</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <select class="form-select bg-dark text-white border-secondary">
+              <option>مرتب‌سازی</option>
+              <option>ارزان‌ترین</option>
+              <option>گران‌ترین</option>
+              <option>جدیدترین</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <input type="search" class="form-control bg-dark text-white border-secondary" placeholder="جستجوی آینه..." />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Product Card -->
+        {% for product in products %}
+          <div class="col-sm-6 col-lg-4">
+            <div class="glass-card p-4 h-100 product-card">
+              <img src="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" alt="" class="product-img mb-3" />
+              <h5 class="fw-bold">{{ product.title }}</h5>
+              <p class="opacity-75 small">{{ product.short_description }}</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="fw-bold">{{ product.price }}</span>
+                <a href="{{ product.get_absolute_url }}" class="btn btn-glass btn-sm">مشاهده</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pagination -->
+  <section class="pb-5">
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <nav>
+          <ul class="pagination pagination-glass">
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">3</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+{% endblock %}

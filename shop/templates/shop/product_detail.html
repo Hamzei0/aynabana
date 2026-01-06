@@ -1,52 +1,191 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+{% extends '_base.html' %}
 
-  <body>
-    <a href="{% url 'home' %}">خانه</a>
+{% load static %}
 
-    <h1>{{ product.title }}</h1>
-    {% for image in product.images.all %}
-      <img src="{{ image.image.url }}" alt="{{ product.title }}" width="100px" height="100px" />
-    {% endfor %}
-    <p>{{ product.short_description }}</p>
-    <p>{{ product.full_description }}</p>
-    <h4>{{ product.price }}</h4>
-    <h5>{{ product.datetime_modified }}</h5>
+{% block title %}
+  {{ product.title }}
+{% endblock %}
 
-    <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
-      <form action="{% url 'cart:cart_add' product.id %}" method="post">
-        {% csrf_token %}
-        {% comment %} {{ add_to_cart|crispy }} {% endcomment %}
-        <div class="quantity">
-          <input type="number" class="quantity-input" name="quantity" id="qty" value="1" min="1" max="5" />
+{% block body %}
+  <!-- Product Detail -->
+  <section class="pt-5 mt-5">
+    <div class="container">
+      <div class="glass-card p-5">
+        <div class="row gy-5 align-items-center">
+          <!-- Info -->
+          <div class="col-lg-6">
+            <h1 class="fw-bold mb-3">{{ product.title }}</h1>
+
+            <p class="opacity-75">{{ product.short_description }}</p>
+
+            <div class="my-4">
+              <span class="fs-4 fw-bold product-price">{{ product.price }}</span>
+              <span class="badge bg-success ms-2">موجود</span>
+            </div>
+            <!-- Size Selector -->
+            <div class="mt-4">
+              <h6 class="fw-bold mb-3">انتخاب قطر آینه</h6>
+
+              <div class="d-flex gap-3 flex-wrap size-selector">
+                <button class="btn size-btn active" data-size="60" data-price="2500000">60 cm</button>
+
+                <button class="btn size-btn" data-size="80" data-price="3200000">80 cm</button>
+
+                <button class="btn size-btn" data-size="100" data-price="4200000">100 cm</button>
+              </div>
+            </div>
+
+            <!-- Specs -->
+            <ul class="list-unstyled opacity-75 product-specs mt-3 border-top pt-3">
+              <li>
+                ✔ قطر: <span class="current-size">60</span> سانتی‌متر
+              </li>
+              <li>✔ ضخامت شیشه: 4 میلی‌متر</li>
+              <li>✔ نوع لبه: تراش خورده</li>
+              <li>✔ مناسب: سرویس بهداشتی، پذیرایی، اتاق خواب</li>
+            </ul>
+
+            <!-- Actions -->
+            <div class="d-flex gap-3 mt-4 flex-wrap">
+              <button class="btn btn-glass px-4">افزودن به سبد</button>
+              <button class="btn btn-outline-light rounded-pill px-4">مشاوره قبل خرید</button>
+            </div>
+          </div>
+          <!-- Gallery -->
+          <div class="col-lg-6">
+            <div class="product-gallery text-center">
+              <div class="main-image mb-4">
+                <img id="zoom_01" src="{% static 'img/41iGb-VwwoL-min.jpg' %}" class="table cursor-zoom" style="width: 400px; object-fit: contain; height: 300px;" />
+              </div>
+
+              <div class="d-flex justify-content-center gap-3 owl-carousel owl-theme gallery-slider">
+                <img src="{% static 'img/41iGb-VwwoL-min.jpg' %}" class="thumb active" data-image="{% static 'img/41iGb-VwwoL-min.jpg' %}" />
+
+                <img src="{% static 'img/city.jpg' %}" class="thumb" data-image="{% static 'img/city.jpg' %}" />
+
+                <img src="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" class="thumb" data-image="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" />
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="btn" type="submit">اضافه کردن</button>
-      </form>
+      </div>
     </div>
+  </section>
 
-    <p>___________________________________</p>
+  <!-- Tabs -->
+  <section class="py-5">
+    <div class="container">
+      <div class="glass-card p-4">
+        <ul class="nav nav-pills mb-4 product-tabs">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#desc">توضیحات</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#specs">مشخصات فنی</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#usage">کاربردها</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#comment">نظرات</button>
+          </li>
+        </ul>
 
-    <h1>comments</h1>
-    {% for comment in product.comments.all %}
-      {% if comment.active %}
-        <p>----------------------------------</p>
-        <h5>{{ comment.author }}</h5>
-        <h6>{{ comment.stars }}</h6>
-        <p>{{ comment.text }}</p>
-        <h6>{{ comment.datetime_modified }}</h6>
-      {% endif %}
-    {% endfor %}
-    <p>___________________________________</p>
-    <h1>comment form</h1>
-    <form action="{% url 'comment_create' product.id %}" method="post">
-      {% csrf_token %}
-      {{ comment_form }}
-      <button type="submit">ارسال</button>
-    </form>
-  </body>
-</html>
+        <div class="tab-content opacity-75">
+          <div class="tab-pane fade show active" id="desc">{{ product.full_description }}</div>
+
+          <div class="tab-pane fade" id="specs">
+            <ul>
+              <li>
+                <span>نوع شیشه :</span> فلوت شفاف
+              </li>
+              <li>
+                <span>پشت شیشه :</span> جیوه نقره‌ای ضد رطوبت
+              </li>
+              <li>
+                <span>نصب :</span> دیواری (پیچ مخفی )
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-pane fade" id="usage">مناسب استفاده در فضاهای مسکونی، تجاری، سرویس بهداشتی‌های مدرن و سالن‌های زیبایی.</div>
+
+          <!-- Comments List -->
+          <div id="comment" class="fade tab-pane">
+            <div class="comments-list mb-5">
+              <h4 class="fw-bold mb-4">نظرات کاربران</h4>
+              {% for comment in product.comments.all %}
+                {% if comment.active %}
+                  <div class="comment mb-4" data-id="1">
+                    <div class="d-flex align-items-center mb-2">
+                      <div class="comment-avatar me-3">👤</div>
+                      <div>
+                        <h6 class="mb-0 fw-bold">{{ comment.author }}</h6>
+                        <small class="opacity-75">{{ comment.datetime_modified }}</small>
+                      </div>
+                    </div>
+                    <p class="opacity-75">{{ comment.text }}</p>
+                    <button class="btn btn-sm btn-glass mt-2 reply-btn">پاسخ</button>
+
+                    <!-- Nested Replies -->
+                    <div class="replies mt-3 ms-5"></div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+
+              {% comment %} <div class="comment mb-4" data-id="2">
+                <div class="d-flex align-items-center mb-2">
+                  <div class="comment-avatar me-3">👤</div>
+                  <div>
+                    <h6 class="mb-0 fw-bold">کاربر ۲</h6>
+                    <small class="opacity-75">5 ژانویه 2026</small>
+                  </div>
+                </div>
+                <p class="opacity-75">اطلاعات خوبی بود، مخصوصاً بخش انتخاب کابینت مدرن.</p>
+                <button class="btn btn-sm btn-glass mt-2 reply-btn">پاسخ</button>
+                <div class="replies mt-3 ms-5"></div>
+              </div> {% endcomment %}
+            </div>
+
+            <!-- Add Comment Form -->
+            <div class="comment-form">
+              <h5 class="fw-bold mb-3">ثبت نظر جدید</h5>
+              <form action="{% url 'comment_create' product.id %}" method="post">
+                {% csrf_token %}
+                {{ comment_form }}
+                <button type="submit">ارسال</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="pb-5">
+    <div class="container">
+      <h3 class="fw-bold mb-4">محصولات مشابه</h3>
+
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="glass-card p-3 text-center product-card">
+            <div class="product-mini mb-3">
+              <img src="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" />
+            </div>
+            <small>آینه بیضی مدرن</small>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="glass-card p-3 text-center product-card">
+            <div class="product-mini mb-3">
+              <img src="{% static 'img/41iGb-VwwoL-min.jpg' %}" />
+            </div>
+            <small>آینه قدی ساده</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
