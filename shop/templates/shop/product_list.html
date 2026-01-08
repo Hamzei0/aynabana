@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load humanize %}
+{% load persian_translations %}
 
 {% block title %}
   Product detail
@@ -61,7 +62,7 @@
               <h5 class="fw-bold">{{ product.title }}</h5>
               <p class="opacity-75 small">{{ product.short_description }}</p>
               <div class="d-flex justify-content-between align-items-center mt-3">
-                <span class="fw-bold">{{ product.price|intcomma:False }}</span>
+                <span class="fw-bold">{{ product.price|intcomma:False|translate_number }}</span>
                 <a href="{{ product.get_absolute_url }}" class="btn btn-glass btn-sm">مشاهده</a>
               </div>
             </div>

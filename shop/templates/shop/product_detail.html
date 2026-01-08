@@ -2,6 +2,7 @@
 
 {% load humanize %}
 {% load static %}
+{% load persian_translations %}
 
 {% block title %}
   {{ product.title }}
@@ -20,7 +21,7 @@
             <p class="opacity-75">{{ product.short_description }}</p>
 
             <div class="my-4">
-              <span class="fs-4 fw-bold product-price">{{ product.price|intcomma:False }}</span>
+              <span class="fs-4 fw-bold product-price">{{ product.price|intcomma:False|translate_number }}</span>
               <span class="badge bg-success ms-2">موجود</span>
             </div>
             <!-- Size Selector -->
@@ -98,14 +99,16 @@
           <div class="tab-pane fade" id="specs">
             <ul>
               <li>
-                <span>نوع شیشه :</span> فلوت شفاف
+                <span>طول :</span> m {{ product.length|translate_number }}
               </li>
               <li>
-                <span>پشت شیشه :</span> جیوه نقره‌ای ضد رطوبت
+                <span>عرض :</span> m {{ product.width|translate_number }}
               </li>
-              <li>
-                <span>نصب :</span> دیواری (پیچ مخفی )
-              </li>
+              {% if product.height %}
+                <li>
+                  <span>ارتفاع :</span> m {{ product.height|translate_number }}
+                </li>
+              {% endif %}
             </ul>
           </div>
 
@@ -149,30 +152,32 @@
             </div>
 
             <!-- Add Comment Form -->
-            <div class="comment-form">
-              <h5 class="fw-bold mb-3">ثبت نظر جدید</h5>
-              <form action="{% url 'comment_create' product.id %}" method="post">
-                {% csrf_token %}
+            {% if user.is_authenticated %}
+              <div class="comment-form">
+                <h5 class="fw-bold mb-3">ثبت نظر جدید</h5>
+                <form action="{% url 'comment_create' product.id %}" method="post">
+                  {% csrf_token %}
 
-                <div class="mb-3">
-                  <label class="form-label">نظر شما</label>
-                  <textarea name="text" class="form-control glass-input" rows="4" placeholder="نظر خود را وارد کنید" required></textarea>
-                </div>
+                  <div class="mb-3">
+                    <label class="form-label">نظر شما</label>
+                    <textarea name="text" class="form-control glass-input" rows="4" placeholder="نظر خود را وارد کنید" required></textarea>
+                  </div>
 
-                <div class="mb-3">
-                  <label class="form-label">امتیاز شما</label>
-                  <select name="stars" class="bg-dark text-white form-select glass-input" required>
-                    <option value="5">عالی</option>
-                    <option value="4">خوب</option>
-                    <option value="3">معمولی</option>
-                    <option value="2">بد</option>
-                    <option value="1">خیلی بد</option>
-                  </select>
-                </div>
+                  <div class="mb-3">
+                    <label class="form-label">امتیاز شما</label>
+                    <select name="stars" class="bg-dark text-white form-select glass-input" required>
+                      <option value="5">عالی</option>
+                      <option value="4">خوب</option>
+                      <option value="3">معمولی</option>
+                      <option value="2">بد</option>
+                      <option value="1">خیلی بد</option>
+                    </select>
+                  </div>
 
-                <button type="submit" class="btn btn-glass">ارسال نظر</button>
-              </form>
-            </div>
+                  <button type="submit" class="btn btn-glass">ارسال نظر</button>
+                </form>
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>

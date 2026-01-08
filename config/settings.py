@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "services.apps.ServicesConfig",
     "shop.apps.ShopConfig",
     "cart.apps.CartConfig",
+    "persian_translate.apps.PersianTranslateConfig",
     # third party
     "rosetta",
     # allauth
