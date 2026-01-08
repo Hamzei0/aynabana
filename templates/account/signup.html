@@ -1,17 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form action="{% url 'account_signup' %}" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">signup</button>
-    </form>
-    <h5><a href="{% url 'home' %}">home</a></h5>
-    <h5><a href="{% url 'account_login' %}">login</a></h5>
-  </body>
-</html>
+{% extends '_base.html' %}
+
+{% block title %}
+  singup
+{% endblock %}
+
+{% block body %}
+  <section class="pt-5 mt-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="glass-card p-5 auth-box">
+            <!-- Tabs -->
+            <div class="d-flex justify-content-center mb-4 auth-tabs">
+              <a href="{% url 'account_login' %}" class="auth-tab" data-target="login">ورود</a>
+              <a href="{% url 'account_signup' %}" class="auth-tab active" data-target="signup">ثبت‌نام</a>
+            </div>
+
+            <!-- Signup -->
+            <div class="auth-form signup-form">
+              <h4 class="fw-bold mb-4 text-center">ایجاد حساب کاربری</h4>
+
+              <form action="{% url 'account_signup' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label class="form-label">نام کاربری</label>
+                  <input name="username" type="text" class="form-control glass-input" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">ایمیل</label>
+                  <input name="email" type="email" class="form-control glass-input" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">رمز عبور</label>
+                  <input name="password1" type="password" class="form-control glass-input" required />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">تکرار رمز عبور</label>
+                  <input name="password2" type="password" class="form-control glass-input" required />
+                </div>
+
+                <button type="submit" class="btn btn-glass w-100 mt-3">ثبت‌نام</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

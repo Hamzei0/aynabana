@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 
+{% load humanize %}
 {% load static %}
 
 {% block title %}
@@ -19,7 +20,7 @@
             <p class="opacity-75">{{ product.short_description }}</p>
 
             <div class="my-4">
-              <span class="fs-4 fw-bold product-price">{{ product.price }}</span>
+              <span class="fs-4 fw-bold product-price">{{ product.price|intcomma:False }}</span>
               <span class="badge bg-success ms-2">موجود</span>
             </div>
             <!-- Size Selector -->
