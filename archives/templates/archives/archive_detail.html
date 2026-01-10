@@ -104,33 +104,24 @@
 
         <!-- Comments List -->
         <div class="comments-list mb-5">
-          <div class="comment mb-4" data-id="1">
-            <div class="d-flex align-items-center mb-2">
-              <div class="comment-avatar me-3">👤</div>
-              <div>
-                <h6 class="mb-0 fw-bold">کاربر ۱</h6>
-                <small class="opacity-75">6 ژانویه 2026</small>
-              </div>
-            </div>
-            <p class="opacity-75">مقاله بسیار مفیدی بود! نکات بازسازی خانه واقعاً کاربردی هستند.</p>
-            <button class="btn btn-sm btn-glass mt-2 reply-btn">پاسخ</button>
+          {% for comment in archive.archive_comments.all %}
+            {% if comment.active %}
+              <div class="comment mb-4" data-id="1">
+                <div class="d-flex align-items-center mb-2">
+                  <div class="comment-avatar me-3">👤</div>
+                  <div>
+                    <h6 class="mb-0 fw-bold">{{ comment.author }}</h6>
+                    <small class="opacity-75">{{ comment.datetime_modified }}</small>
+                  </div>
+                </div>
+                <p class="opacity-75">{{ comment.text }}</p>
+                <button class="btn btn-sm btn-glass mt-2 reply-btn">پاسخ</button>
 
-            <!-- Nested Replies -->
-            <div class="replies mt-3 ms-5"></div>
-          </div>
-
-          <div class="comment mb-4" data-id="2">
-            <div class="d-flex align-items-center mb-2">
-              <div class="comment-avatar me-3">👤</div>
-              <div>
-                <h6 class="mb-0 fw-bold">کاربر ۲</h6>
-                <small class="opacity-75">5 ژانویه 2026</small>
+                <!-- Nested Replies -->
+                <div class="replies mt-3 ms-5"></div>
               </div>
-            </div>
-            <p class="opacity-75">اطلاعات خوبی بود، مخصوصاً بخش انتخاب کابینت مدرن.</p>
-            <button class="btn btn-sm btn-glass mt-2 reply-btn">پاسخ</button>
-            <div class="replies mt-3 ms-5"></div>
-          </div>
+            {% endif %}
+          {% endfor %}
         </div>
 
         <!-- Add Comment Form -->
