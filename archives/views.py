@@ -8,3 +8,9 @@ class ArchivesListView(generic.ListView):
     model = models.Archives
     template_name = "archives/archive_list.html"
     context_object_name = "archives"
+
+
+class ArchiveDetailView(generic.DetailView):
+    model = models.Archives
+    template_name = "archives/archive_detail.html"
+    context_object_name = "archive"
