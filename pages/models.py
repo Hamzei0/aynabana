@@ -18,3 +18,12 @@ class Consulting(models.Model):
         auto_now=True,
         verbose_name=_("datetime modified"),
     )
+
+
+class ContactUs(models.Model):
+    first_name = models.CharField(max_length=30, verbose_name=_("first name"))
+    last_name = models.CharField(max_length=30, verbose_name=_("last name"))
+
+    phone_number = models.CharField(max_length=15, verbose_name=_("phone number"))
+
+    note = models.TextField(verbose_name=_("note"))
