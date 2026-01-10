@@ -96,4 +96,4 @@ class CommentArchive(models.Model):
         verbose_name_plural = _("CommentArchives")
 
     def get_absolute_url(self):
-        return reverse("product_detail", args=[self.product.id])
+        return reverse("archive_detail", args=[self.archive.id])
