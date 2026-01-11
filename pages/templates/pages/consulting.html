@@ -1,0 +1,99 @@
+{% extends '_base.html' %}
+
+{% block title %}
+  Consulting
+{% endblock %}
+
+{% block body %}
+  <!-- Consultation Request -->
+  <section class="pt-5 mt-5">
+    <div class="container">
+      <!-- Header -->
+      <div class="glass-card p-5 text-center mb-5">
+        <h1 class="fw-bold">درخواست مشاوره</h1>
+        <p class="opacity-75 mt-3">برای دریافت مشاوره رایگان و بازدید اولیه، فرم زیر را تکمیل نمایید</p>
+      </div>
+
+      <div class="row g-5">
+        <!-- Form -->
+        <div class="col-lg-7">
+          <div class="glass-card p-4">
+            <h5 class="fw-bold mb-4">فرم درخواست مشاوره</h5>
+
+            <form action="#" method="post">
+              {% csrf_token %}
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">نام</label>
+                  <input name="first_name" type="text" class="form-control glass-input" required />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">نام خانوادگی</label>
+                  <input name="last_name" type="tel" class="form-control glass-input" required />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">شهر</label>
+                  <input name="city" type="text" class="form-control glass-input" />
+                </div>
+
+                {% comment %} <div class="col-md-6">
+                  <label class="form-label">نوع خدمات</label>
+                  <select class="form-select glass-input text-light bg-dark">
+                    <option>تغییر دکوراسیون</option>
+                    <option>کابینت</option>
+                    <option>کناف‌کاری</option>
+                    <option>بازسازی کامل</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">متراژ تقریبی</label>
+                  <input type="number" class="form-control glass-input" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">زمان مورد نظر تماس</label>
+                  <select class="form-select glass-input text-light bg-dark">
+                    <option>صبح</option>
+                    <option>ظهر</option>
+                    <option>عصر</option>
+                  </select>
+                </div> {% endcomment %}
+
+                <div class="col-12">
+                  <label class="form-label">توضیحات تکمیلی</label>
+                  <textarea name="note" rows="4" class="form-control glass-input"></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-glass w-100 mt-4">ثبت درخواست مشاوره</button>
+
+              <div class="form-message mt-3 opacity-75"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="col-lg-5">
+          <div class="glass-card p-4 h-100">
+            <h5 class="fw-bold mb-4">چرا مشاوره با ما؟</h5>
+
+            <ul class="opacity-75 lh-lg">
+              <li>✔ مشاوره و بازدید اولیه رایگان</li>
+              <li>✔ برآورد شفاف هزینه</li>
+              <li>✔ طراحی مطابق سلیقه شما</li>
+              <li>✔ اجرای حرفه‌ای و تضمین کیفیت</li>
+            </ul>
+
+            <div class="mt-4 p-3 text-center glass-highlight">
+              <strong>📞 تماس مستقیم:</strong><br />
+              0912xxxxxxx
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

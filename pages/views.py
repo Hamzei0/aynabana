@@ -23,3 +23,10 @@ class ContactUs(generic.CreateView):
     form_class = forms.ContactUsForm
     template_name = "pages/contact_us.html"
     success_url = reverse_lazy("contact_us")
+
+
+class Consulting(generic.CreateView):
+    model = models.Consulting
+    form_class = forms.ConsultingForm
+    template_name = "pages/consulting.html"
+    success_url = reverse_lazy("consulting")
