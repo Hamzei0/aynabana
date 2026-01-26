@@ -94,6 +94,7 @@ class CommentArchive(models.Model):
     class Meta:
         verbose_name = _("CommentArchive")
         verbose_name_plural = _("CommentArchives")
+        ordering = ["-datetime_modified"]
 
     def get_absolute_url(self):
         return reverse("archive_detail", args=[self.archive.id])

@@ -120,6 +120,10 @@
                 <!-- Nested Replies -->
                 <div class="replies mt-3 ms-5"></div>
               </div>
+            {% else %}
+              <p>
+                لطفا به حساب خود وارد شوید <a href="{% url 'account_login' %}">ورود به حساب</a>
+              </p>
             {% endif %}
           {% endfor %}
         </div>

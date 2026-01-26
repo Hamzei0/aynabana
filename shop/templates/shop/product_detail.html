@@ -179,6 +179,10 @@
                   <button type="submit" class="btn btn-glass">ارسال نظر</button>
                 </form>
               </div>
+            {% else %}
+              <p>
+                لطفا به حساب خود وارد شوید <a href="{% url 'account_login' %}">ورود به حساب</a>
+              </p>
             {% endif %}
           </div>
         </div>
