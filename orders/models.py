@@ -42,3 +42,6 @@ class OrderItem(models.Model):
     )
     quantity = models.PositiveIntegerField(default=1, verbose_name=_("quantity"))
     price = models.PositiveIntegerField(verbose_name=_("price"))
+
+    def __str__(self):
+        return f"product: {self.product} quantity: {self.quantity} price: {self.price}"
