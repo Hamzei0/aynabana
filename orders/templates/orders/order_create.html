@@ -1,5 +1,8 @@
 {% extends '_base.html' %}
 
+{% load humanize %}
+{% load persian_translations %}
+
 {% block title %}
 
 {% endblock %}
@@ -15,28 +18,40 @@
         <div class="col-lg-7">
           <div class="glass-card p-4">
             <h5 class="fw-bold mb-4">اطلاعات خریدار</h5>
+            <form action="" method="post">
+              {% csrf_token %}
+              {% if form.errors %}
+                <div class="col-md-6">
+                  <p>{{ form.errors }}</p>
+                </div>
+              {% endif %}
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label class="form-label">نام</label>
+                  <input name="first_name" type="text" class="form-control checkout-input" />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">نام خانوادگی</label>
+                  <input name="last_name" type="text" class="form-control checkout-input" />
+                </div>
 
-            <div class="row gy-3">
-              <div class="col-md-6">
-                <label class="form-label">نام و نام خانوادگی</label>
-                <input type="text" class="form-control checkout-input" />
-              </div>
+                <div class="col-md-6">
+                  <label class="form-label">شماره تماس</label>
+                  <input name="phone_number" type="tel" class="form-control checkout-input" />
+                </div>
 
-              <div class="col-md-6">
-                <label class="form-label">شماره تماس</label>
-                <input type="tel" class="form-control checkout-input" />
-              </div>
+                <div class="col-12">
+                  <label class="form-label">آدرس کامل</label>
+                  <textarea name="address" rows="3" class="form-control checkout-input"></textarea>
+                </div>
 
-              <div class="col-12">
-                <label class="form-label">ایمیل (اختیاری)</label>
-                <input type="email" class="form-control checkout-input" />
+                <div class="col-12">
+                  <label class="form-label">توضیحات</label>
+                  <textarea name="order_notes" rows="3" class="form-control checkout-input"></textarea>
+                </div>
               </div>
-
-              <div class="col-12">
-                <label class="form-label">آدرس کامل</label>
-                <textarea rows="3" class="form-control checkout-input"></textarea>
-              </div>
-            </div>
+              <button type="submit">ارسال</button>
+            </form>
           </div>
         </div>
 
@@ -44,15 +59,15 @@
         <div class="col-lg-5">
           <div class="glass-card p-4 checkout-summary">
             <h5 class="fw-bold mb-4">خلاصه سفارش</h5>
-
+            {% for item in cart %}
+              <div class="d-flex justify-content-between mb-2">
+                <span>{{ item.product_obj.title|translate_number }}</span>
+                <h6 class="mb-1">{{ item.product_obj.price|intcomma:False|translate_number }}</h6>
+              </div>
+            {% endfor %}
             <div class="d-flex justify-content-between mb-2">
               <span>جمع سبد خرید</span>
-              <span class="fw-bold">7,400,000 تومان</span>
-            </div>
-
-            <div class="d-flex justify-content-between mb-2">
-              <span>تخفیف</span>
-              <span class="fw-bold text-success">-1,480,000 تومان</span>
+              <span class="fw-bold">{{ cart.get_total_price|intcomma:False|translate_number }} تومان</span>
             </div>
 
             <div class="d-flex justify-content-between mb-3">
@@ -64,7 +79,7 @@
 
             <div class="d-flex justify-content-between fs-5">
               <span>مبلغ نهایی</span>
-              <span class="fw-bold final-price">5,920,000 تومان</span>
+              <span class="fw-bold final-price">{{ cart.get_total_price|intcomma:False|translate_number }} تومان</span>
             </div>
 
             <!-- Payment -->

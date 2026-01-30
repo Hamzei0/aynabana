@@ -18,6 +18,11 @@
 
             <form method="post">
               {% csrf_token %}
+              {% if form.errors %}
+                <div class="col-md-6">
+                  <p>{{ form.errors }}</p>
+                </div>
+              {% endif %}
               <div class="mb-3">
                 <label class="form-label">نام</label>
                 <input name="first_name" type="text" class="form-control contact-input" required />

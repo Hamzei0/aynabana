@@ -159,7 +159,11 @@
                 <h5 class="fw-bold mb-3">ثبت نظر جدید</h5>
                 <form action="{% url 'comment_create' product.id %}" method="post">
                   {% csrf_token %}
-
+                  {% if form.errors %}
+                    <div class="col-md-6">
+                      <p>{{ form.errors }}</p>
+                    </div>
+                  {% endif %}
                   <div class="mb-3">
                     <label class="form-label">نظر شما</label>
                     <textarea name="text" class="form-control glass-input" rows="4" placeholder="نظر خود را وارد کنید" required></textarea>
