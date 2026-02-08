@@ -12,7 +12,7 @@ jQuery('.gallery-slider').owlCarousel({
         0: {
             items: 5,
         },
-        
+
     }
 });
 
@@ -44,24 +44,24 @@ jQuery(function () {
 
 
 });
-jQuery(function () {
+// jQuery(function () {
 
-    jQuery(".size-btn").on("click", function () {
+//     jQuery(".size-btn").on("click", function () {
 
-        jQuery(".size-btn").removeClass("active");
-        jQuery(this).addClass("active");
+//         jQuery(".size-btn").removeClass("active");
+//         jQuery(this).addClass("active");
 
-        let price = jQuery(this).data("price");
-        let formattedPrice = price.toLocaleString("fa-IR");
+//         let price = jQuery(this).data("price");
+//         let formattedPrice = price.toLocaleString("fa-IR");
 
-        jQuery(".product-price").text(formattedPrice + " تومان");
+//         jQuery(".product-price").text(formattedPrice + " تومان");
 
-    });
+//     });
 
-});
-jQuery(".size-btn").on("click", function () {
-    jQuery(".current-size").text(jQuery(this).data("size"));
-});
+// });
+// jQuery(".size-btn").on("click", function () {
+//     jQuery(".current-size").text(jQuery(this).data("size"));
+// });
 
 jQuery(function () {
 
@@ -248,12 +248,12 @@ jQuery(function () {
 
     jQuery("#login-form").on("submit", function (e) {
         e.preventDefault();
-        alert("ورود با موفقیت انجام شد (نمونه)");
+        alert("ورود با موفقیت انجام شد ");
     });
 
     jQuery("#signup-form").on("submit", function (e) {
         e.preventDefault();
-        alert("ثبت‌نام با موفقیت انجام شد (نمونه)");
+        alert("ثبت‌نام با موفقیت انجام شد ");
     });
 
 });
@@ -402,4 +402,4 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 L.marker([35.713443, 51.501739]).addTo(map)
     .bindPopup(' کابینت')
     .openPopup();
-    //You clicked the map at LatLng(35.713443, 51.501739)
+//You clicked the map at LatLng(35.713443, 51.501739)

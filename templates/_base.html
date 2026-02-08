@@ -26,12 +26,27 @@
     <header>
       <nav class="navbar navbar-expand-lg fixed-top glass-nav">
         <div class="container-fluid px-4">
-          <a class="navbar-brand fw-bold text-primary" href="#">MirrorArt</a>
+          <a class="navbar-brand fw-bold text-primary" href="{% url 'home' %}">AynaBana</a>
 
           <button class="navbar-toggler text-white border-primary py-2 border-start-0 border-end-0" data-bs-toggle="collapse" data-bs-target="#mainNav">☰</button>
 
           <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ms-auto gap-3">
+              {% comment %}login / signup{% endcomment %}
+              {% if user.is_authenticated %}
+                {% comment %}if logedin show profile{% endcomment %}
+                <li class="nav-item d-block d-lg-none">
+                  <a href="#" class="nav-link"><span><i class="bi bi-person"></i></span></a>
+                </li>
+                <li class="nav-item d-block d-lg-none">
+                  <a href="#" class="nav-link"><span><i class="bi bi-person">خروج</i></span></a>
+                </li>
+              {% else %}
+                <li class="nav-item d-block d-lg-none">
+                  <a href="{% url 'account_login' %}" class="nav-link"><span><i class="bi bi-box-arrow-in-right"></i></span></a>
+                </li>
+              {% endif %}
+
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}">خانه</a>
               </li>
@@ -47,6 +62,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about_us' %}">درباره ما</a>
               </li>
+              {% if user.is_authenticated %}
+                {% comment %}if logedin show profile{% endcomment %}
+                <li class="nav-item d-none d-lg-block">
+                  <a href="#" class="nav-link"><span><i class="bi bi-person"></i></span></a>
+                </li>
+              {% else %}
+                {% comment %}login / signup{% endcomment %}
+                <li class="nav-item d-none d-lg-block">
+                  <a href="{% url 'account_login' %}" class="nav-link"><span><i class="bi bi-box-arrow-in-right"></i></span></a>
+                </li>
+              {% endif %}
 
               <li class="d-block d-sm-none">
                 <div class="text-center py-2 main-menu-res">
@@ -58,6 +84,7 @@
               </li>
             </ul>
           </div>
+
           <div class="col-lg-4 col-sm-6 d-none d-sm-block text-center py-2 main-menu">
             <form action="" class="position-relative search-box">
               <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />

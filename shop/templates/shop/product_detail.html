@@ -25,7 +25,7 @@
               <span class="badge bg-success ms-2">موجود</span>
             </div>
             <!-- Size Selector -->
-            <div class="mt-4">
+            {% comment %} <div class="mt-4">
               <h6 class="fw-bold mb-3">انتخاب قطر آینه</h6>
 
               <div class="d-flex gap-3 flex-wrap size-selector">
@@ -35,7 +35,7 @@
 
                 <button class="btn size-btn" data-size="100" data-price="4200000">100 cm</button>
               </div>
-            </div>
+            </div> {% endcomment %}
 
             <!-- Specs -->
             <ul class="list-unstyled opacity-75 product-specs mt-3 border-top pt-3">
@@ -88,9 +88,6 @@
             <button class="nav-link" data-bs-toggle="pill" data-bs-target="#specs">مشخصات فنی</button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#usage">کاربردها</button>
-          </li>
-          <li class="nav-item">
             <button class="nav-link" data-bs-toggle="pill" data-bs-target="#comment">نظرات</button>
           </li>
         </ul>
@@ -100,12 +97,14 @@
 
           <div class="tab-pane fade" id="specs">
             <ul>
-              <li>
-                <span>طول :</span> m {{ product.length|translate_number }}
-              </li>
-              <li>
-                <span>عرض :</span> m {{ product.width|translate_number }}
-              </li>
+              {% if product.length %}
+                <li>
+                  <span>طول :</span> m {{ product.length|translate_number }}
+                </li>
+                <li>
+                  <span>عرض :</span> m {{ product.width|translate_number }}
+                </li>
+              {% endif %}
               {% if product.height %}
                 <li>
                   <span>ارتفاع :</span> m {{ product.height|translate_number }}
@@ -113,8 +112,6 @@
               {% endif %}
             </ul>
           </div>
-
-          <div class="tab-pane fade" id="usage">مناسب استفاده در فضاهای مسکونی، تجاری، سرویس بهداشتی‌های مدرن و سالن‌های زیبایی.</div>
 
           <!-- Comments List -->
           <div id="comment" class="fade tab-pane">

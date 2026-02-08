@@ -54,6 +54,14 @@ body {
     --color2: #f8e71c;
 }
 
+.modal-backdrop {
+    z-index: 1;
+}
+
+.nav-link:focus {
+    color: #fff;
+}
+
 .navbar-toggler:focus {
     box-shadow: none;
 }
@@ -811,7 +819,7 @@ h1.display-1 {
 
 .comment p {
     padding: 16px;
-    margin: 16px 0 10px 0 ;
+    margin: 16px 0 10px 0;
     background: #00000073;
     border-right: 1px solid var(--bs-primary);
     border-left: 1px solid var(--bs-primary);
@@ -819,15 +827,15 @@ h1.display-1 {
 }
 
 .comment-form .glass-input {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: #fff;
 }
 
 .comment-form .glass-input::placeholder {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .comment-form .btn-glass {
@@ -837,7 +845,7 @@ h1.display-1 {
 .replies .comment {
     margin-top: 10px;
     margin-left: 20px;
-    border-left: 2px solid rgba(255,255,255,0.1);
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
     padding-left: 15px;
 }
 
