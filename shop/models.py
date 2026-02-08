@@ -11,7 +11,11 @@ class ActiveManager(models.Manager):
 
 
 class Products(models.Model):
-
+    main_image = models.ImageField(
+        upload_to="product/main_image/product_image",
+        blank=True,
+        verbose_name=_("main image"),
+    )
     title = models.CharField(max_length=100, verbose_name=_("title"))
     short_description = models.CharField(
         max_length=300, verbose_name=_("short description")

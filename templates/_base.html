@@ -38,9 +38,6 @@
                 <li class="nav-item d-block d-lg-none">
                   <a href="#" class="nav-link"><span><i class="bi bi-person"></i></span></a>
                 </li>
-                <li class="nav-item d-block d-lg-none">
-                  <a href="#" class="nav-link"><span><i class="bi bi-person">خروج</i></span></a>
-                </li>
               {% else %}
                 <li class="nav-item d-block d-lg-none">
                   <a href="{% url 'account_login' %}" class="nav-link"><span><i class="bi bi-box-arrow-in-right"></i></span></a>
@@ -66,6 +63,12 @@
                 {% comment %}if logedin show profile{% endcomment %}
                 <li class="nav-item d-none d-lg-block">
                   <a href="#" class="nav-link"><span><i class="bi bi-person"></i></span></a>
+                </li>
+                <li class="nav-item">
+                  <form action="{% url 'account_logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn ps-0 ps-lg-2 text-danger border-0">خروج</button>
+                  </form>
                 </li>
               {% else %}
                 {% comment %}login / signup{% endcomment %}

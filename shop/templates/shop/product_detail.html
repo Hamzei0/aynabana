@@ -56,21 +56,28 @@
             </form>
           </div>
           <!-- Gallery -->
-          <div class="col-lg-6">
-            <div class="product-gallery text-center">
-              <div class="main-image mb-4">
-                <img id="zoom_01" src="{% static 'img/41iGb-VwwoL-min.jpg' %}" class="table cursor-zoom" style="width: 400px; object-fit: contain; height: 300px;" />
-              </div>
+          {% if product.main_image %}
+            <div class="col-lg-6">
+              <div class="product-gallery text-center">
+                <div class="main-image mb-4">
+                  <img id="zoom_01" src="{{ product.main_image.url }}" class="table cursor-zoom" style="width: 400px; object-fit: contain; height: 300px;" />
+                </div>
 
-              <div class="d-flex justify-content-center gap-3 owl-carousel owl-theme gallery-slider">
-                <img src="{% static 'img/41iGb-VwwoL-min.jpg' %}" class="thumb active" data-image="{% static 'img/41iGb-VwwoL-min.jpg' %}" />
+                <div class="d-flex justify-content-center gap-3 owl-carousel owl-theme gallery-slider">
+                  {% comment %} <img src="{% static 'img/41iGb-VwwoL-min.jpg' %}" class="thumb active" data-image="{% static 'img/41iGb-VwwoL-min.jpg' %}" />
 
-                <img src="{% static 'img/city.jpg' %}" class="thumb" data-image="{% static 'img/city.jpg' %}" />
+                  <img src="{% static 'img/city.jpg' %}" class="thumb" data-image="{% static 'img/city.jpg' %}" />
 
-                <img src="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" class="thumb" data-image="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" />
+                  <img src="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" class="thumb" data-image="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" />
+                  {% endcomment %}
+
+                  {% for img in product.images.all %}
+                    <img src="{{ img.image.url }}" class="thumb" data-image="{{ img.image.url }}" />
+                  {% endfor %}
+                </div>
               </div>
             </div>
-          </div>
+          {% endif %}
         </div>
       </div>
     </div>
