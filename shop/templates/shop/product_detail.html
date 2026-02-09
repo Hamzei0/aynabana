@@ -40,11 +40,11 @@
             <!-- Specs -->
             <ul class="list-unstyled opacity-75 product-specs mt-3 border-top pt-3">
               <li>
-                ✔ قطر: <span class="current-size">60</span> سانتی‌متر
+                ✔ قطر: <span class="current-size">{{ product.diameter|translate_number }}</span> سانتی‌متر
               </li>
-              <li>✔ ضخامت شیشه: 4 میلی‌متر</li>
-              <li>✔ نوع لبه: تراش خورده</li>
-              <li>✔ مناسب: سرویس بهداشتی، پذیرایی، اتاق خواب</li>
+              <li>✔ ضخامت شیشه: {{ product.glass_thickness|translate_number }} میلی‌متر</li>
+              <li>✔ نوع لبه: {{ product.edge_type }}</li>
+              <li>✔ مناسب: {{ product.suitable_for }}</li>
             </ul>
 
             <!-- Actions -->
