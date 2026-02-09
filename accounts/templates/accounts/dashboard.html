@@ -1,0 +1,175 @@
+{% extends '_base.html' %}
+
+{% block title %}
+  Dashboard
+{% endblock %}
+
+{% block body %}
+  <!-- User Dashboard -->
+  <section class="pt-5 mt-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Sidebar -->
+        <div class="col-lg-3">
+          <div class="glass-card p-4 user-sidebar">
+            <div class="text-center mb-4">
+              <div class="user-avatar mb-2">👤</div>
+              <h6 class="fw-bold mb-0">کاربر عزیز</h6>
+              <small class="opacity-75">user@email.com</small>
+            </div>
+
+            <ul class="nav flex-column user-menu">
+              <li class="nav-item">
+                <a class="nav-link active" data-target="dashboard">داشبورد</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-target="orders">سفارش‌ها</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-target="consultations">مشاوره‌ها</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-target="profile">اطلاعات حساب</a>
+              </li>
+              <li class="nav-item">
+                <form action="{% url 'account_logout' %}" method="post">
+                  {% csrf_token %}
+                  <button class="nav-link text-danger">خروج</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="col-lg-9">
+          <!-- Dashboard -->
+          <div class="glass-card p-4 user-content" id="dashboard">
+            <h4 class="fw-bold mb-3">داشبورد</h4>
+            <p class="opacity-75">به حساب کاربری خود خوش آمدید 👋</p>
+
+            <div class="row g-4 mt-3">
+              <div class="col-md-4">
+                <div class="stat-box">
+                  <h5>3</h5>
+                  <small>سفارش‌ها</small>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stat-box">
+                  <h5>1</h5>
+                  <small>مشاوره فعال</small>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stat-box">
+                  <h5>0</h5>
+                  <small>پیام‌ها</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- empty Orders -->
+          <!--         <div class="glass-card p-4 user-content d-none" id="orders">
+                    <h4 class="fw-bold mb-3">سفارش‌ها</h4>
+                    <p class="opacity-75">سفارشی ثبت نشده است.</p>
+                </div>         -->
+
+          <div class="glass-card p-4 user-content d-none" id="orders">
+            <h4 class="fw-bold mb-4">سفارش‌ها</h4>
+
+            <div class="table-responsive">
+              <table class="table table-borderless text-white align-middle">
+                <thead>
+                  <tr>
+                    <th>شماره سفارش</th>
+                    <th>تاریخ</th>
+                    <th>محصول</th>
+                    <th>تعداد</th>
+                    <th>قیمت کل</th>
+                    <th>وضعیت</th>
+                    <th>عملیات</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#1001</td>
+                    <td>2026-01-06</td>
+                    <td>آینه مدرن 60x80</td>
+                    <td>2</td>
+                    <td>2,400,000 تومان</td>
+                    <td>
+                      <span class="badge bg-success">تحویل شده</span>
+                    </td>
+                    <td>
+                      <button class="btn btn-sm btn-glass view-order">جزئیات</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>#1002</td>
+                    <td>2026-01-04</td>
+                    <td>کابینت آشپزخانه</td>
+                    <td>1</td>
+                    <td>15,000,000 تومان</td>
+                    <td>
+                      <span class="badge bg-warning text-dark">در حال پردازش</span>
+                    </td>
+                    <td>
+                      <button class="btn btn-sm btn-glass view-order">جزئیات</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>#1003</td>
+                    <td>2026-01-01</td>
+                    <td>کناف سقف پذیرایی</td>
+                    <td>1</td>
+                    <td>4,500,000 تومان</td>
+                    <td>
+                      <span class="badge bg-danger">لغو شده</span>
+                    </td>
+                    <td>
+                      <button class="btn btn-sm btn-glass view-order">جزئیات</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Consultations -->
+          <div class="glass-card p-4 user-content d-none" id="consultations">
+            <h4 class="fw-bold mb-3">درخواست‌های مشاوره</h4>
+            <p class="opacity-75">درخواستی ثبت نشده است.</p>
+          </div>
+
+          <!-- Profile -->
+          <div class="glass-card p-4 user-content d-none" id="profile">
+            <h4 class="fw-bold mb-4">اطلاعات حساب</h4>
+
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">نام</label>
+                  <input type="text" class="form-control glass-input" value="نام کاربر" />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">ایمیل</label>
+                  <input type="email" class="form-control glass-input" value="user@email.com" />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">شماره تماس</label>
+                  <input type="text" class="form-control glass-input" />
+                </div>
+              </div>
+
+              <button class="btn btn-glass mt-4">ذخیره تغییرات</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
