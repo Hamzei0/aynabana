@@ -19,6 +19,10 @@ class Consulting(models.Model):
         verbose_name=_("datetime modified"),
     )
 
+    class Meta:
+        verbose_name = _("Consulting")
+        verbose_name_plural = _("Consultings")
+
 
 class ContactUs(models.Model):
     first_name = models.CharField(max_length=30, verbose_name=_("first name"))
@@ -27,3 +31,7 @@ class ContactUs(models.Model):
     phone_number = models.CharField(max_length=15, verbose_name=_("phone number"))
 
     note = models.TextField(verbose_name=_("note"))
+
+    class Meta:
+        verbose_name = _("Contact Us")
+        verbose_name_plural = _("ContactUss")

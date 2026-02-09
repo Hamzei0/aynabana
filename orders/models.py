@@ -26,6 +26,10 @@ class Order(models.Model):
         verbose_name=_("datetime modified"),
     )
 
+    class Meta:
+        verbose_name = _("Order")
+        verbose_name_plural = _("Orders")
+
     def __str__(self):
         return f"Order: {self.id}"
 
@@ -42,6 +46,10 @@ class OrderItem(models.Model):
     )
     quantity = models.PositiveIntegerField(default=1, verbose_name=_("quantity"))
     price = models.PositiveIntegerField(verbose_name=_("price"))
+
+    class Meta:
+        verbose_name = _("OrderItem")
+        verbose_name_plural = _("OrderItems")
 
     def __str__(self):
         return f"product: {self.product} quantity: {self.quantity} price: {self.price}"

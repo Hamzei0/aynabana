@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-09 21:59+0330\n"
+"POT-Creation-Date: 2026-02-09 23:15+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -18,54 +18,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: orders/models.py:9
+#: models.py:9
 msgid "user"
 msgstr "کاربر"
 
-#: orders/models.py:11
+#: models.py:11
 msgid "is paid"
 msgstr "پرداخت شده"
 
-#: orders/models.py:13
+#: models.py:13
 msgid "first name"
 msgstr "نام"
 
-#: orders/models.py:14
+#: models.py:14
 msgid "last name"
 msgstr "نام خانوادگی"
 
-#: orders/models.py:16
+#: models.py:16
 msgid "phone number"
 msgstr "شماره تلفن"
 
-#: orders/models.py:17
+#: models.py:17
 msgid "address"
 msgstr "آدرس"
 
-#: orders/models.py:18
+#: models.py:18
 msgid "order notes"
 msgstr "یادداشت‌های سفارش"
 
-#: orders/models.py:22
+#: models.py:22
 msgid "datetime created"
 msgstr "تاریخ و زمان ایجاد"
 
-#: orders/models.py:26
+#: models.py:26
 msgid "datetime modified"
 msgstr "تاریخ و زمان ویرایش"
 
-#: orders/models.py:35
+#: models.py:30
+msgid "Order"
+msgstr "سفارش"
+
+#: models.py:31
+msgid "Orders"
+msgstr "سفارش‌ها"
+
+#: models.py:39
 msgid "item"
 msgstr "کالا"
 
-#: orders/models.py:41
+#: models.py:45
 msgid "order items"
 msgstr "اقلام سفارش"
 
-#: orders/models.py:43
+#: models.py:47
 msgid "quantity"
 msgstr "تعداد"
 
-#: orders/models.py:44
+#: models.py:48
 msgid "price"
 msgstr "قیمت"
+
+#: models.py:51
+msgid "OrderItem"
+msgstr "کالای سفارش"
+
+#: models.py:52
+msgid "OrderItems"
+msgstr "اقلام سفارش"
