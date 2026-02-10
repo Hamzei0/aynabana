@@ -12,6 +12,7 @@ class ProductListView(generic.ListView):
     model = models.Products
     template_name = "shop/product_list.html"
     context_object_name = "products"
+    paginate_by = 6
 
 
 class ProductDetailView(generic.DetailView):

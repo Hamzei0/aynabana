@@ -11,6 +11,7 @@ class ArchivesListView(generic.ListView):
     model = models.Archives
     template_name = "archives/archive_list.html"
     context_object_name = "archives"
+    paginate_by = 6
 
 
 class ArchiveDetailView(generic.DetailView):
