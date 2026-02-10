@@ -23,6 +23,13 @@ class ArchiveDetailView(generic.DetailView):
 class ArchiveCommentCreate(generic.CreateView):
     model = models.CommentArchive
     form_class = forms.ArchiveCommentForm
+    template_name = "archives/archive_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        archive_id = self.kwargs.get("archive_id")
+        context["archive"] = get_object_or_404(models.Archives, id=archive_id)
+        return context
 
     def form_valid(self, form):
         obj = form.save(commit=False)

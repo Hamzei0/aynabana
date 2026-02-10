@@ -30,6 +30,13 @@ class ProductDetailView(generic.DetailView):
 class CommentCreate(generic.CreateView):
     model = models.CommentProduct
     form_class = forms.CommentForm
+    template_name = "shop/product_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product_id = self.kwargs.get("product_id")
+        context["product"] = get_object_or_404(models.Products, id=product_id)
+        return context
 
     def form_valid(self, form):
         obj = form.save(commit=False)
