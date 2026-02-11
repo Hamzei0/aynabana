@@ -18,16 +18,18 @@
       <div class="row g-4">
         <!-- Article Card -->
         {% for article in articles %}
-          <div class="col-md-6 col-lg-4">
-            <div class="blog-card glass-card overflow-hidden">
-              <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" />
-              <div class="p-4">
-                <h5 class="fw-bold mb-2">{{ article.title }}</h5>
-                <p class="opacity-75 mb-3">{{ article.text|truncatewords:7 }}</p>
-                <a href="{{ article.get_absolute_url }}" class="btn btn-sm btn-glass">مطالعه بیشتر</a>
+          {% if article.active %}
+            <div class="col-md-6 col-lg-4">
+              <div class="blog-card glass-card overflow-hidden">
+                <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" />
+                <div class="p-4">
+                  <h5 class="fw-bold mb-2">{{ article.title }}</h5>
+                  <p class="opacity-75 mb-3">{{ article.text|truncatewords:7 }}</p>
+                  <a href="{{ article.get_absolute_url }}" class="btn btn-sm btn-glass">مطالعه بیشتر</a>
+                </div>
               </div>
             </div>
-          </div>
+          {% endif %}
         {% endfor %}
       </div>
 

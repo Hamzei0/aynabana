@@ -136,7 +136,7 @@ class CommentProduct(models.Model):
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
-        related_name="comments",
+        related_name="product_comments",
         verbose_name=_("author"),
     )
 
