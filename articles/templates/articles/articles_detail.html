@@ -1,5 +1,7 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load persian_translations %}
+{% load jformat %}
 
 {% block title %}
   Article
@@ -13,7 +15,7 @@
       <div class="glass-card p-5 mb-5 text-center">
         <h1 class="fw-bold mb-3" style="color: var(--color1);">{{ article.title }}</h1>
         <p class="opacity-75 mb-0">
-          توسط <strong>{{ article.user }}</strong> | {{ article.datetime_created }} | {{ article.category }}
+          توسط <strong>{{ article.user }}</strong> | {{ article.datetime_created|jformat:'%Y/%m/%d'|translate_number }} | {{ article.category }}
         </p>
       </div>
 
@@ -103,7 +105,7 @@
                   <div class="comment-avatar me-3">👤</div>
                   <div>
                     <h6 class="mb-0 fw-bold">{{ comment.author }}</h6>
-                    <small class="opacity-75">{{ comment.datetime_modified }}</small>
+                    <small class="opacity-75">{{ comment.datetime_modified|jformat:'%Y/%m/%d'|translate_number }}</small>
                   </div>
                 </div>
                 <p class="opacity-75">{{ comment.text }}</p>

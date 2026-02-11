@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
+    "django_jalali",
     # local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",

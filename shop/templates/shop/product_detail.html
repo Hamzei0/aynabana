@@ -3,6 +3,7 @@
 {% load humanize %}
 {% load static %}
 {% load persian_translations %}
+{% load jformat %}
 
 {% block title %}
   {{ product.title }}
@@ -133,7 +134,7 @@
                       <div class="comment-avatar me-3">👤</div>
                       <div>
                         <h6 class="mb-0 fw-bold">{{ comment.author }}</h6>
-                        <small class="opacity-75">{{ comment.datetime_modified }}</small>
+                        <small class="opacity-75">{{ comment.datetime_modified|jformat:'%Y/%m/%d'|translate_number }}</small>
                       </div>
                     </div>
                     <p class="opacity-75">{{ comment.text }}</p>
