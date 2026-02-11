@@ -102,7 +102,7 @@
         </ul>
 
         <div class="tab-content opacity-75">
-          <div class="tab-pane fade show active" id="desc">{{ product.full_description }}</div>
+          <div class="tab-pane fade show active" id="desc">{{ product.full_description|safe }}</div>
 
           <div class="tab-pane fade" id="specs">
             <ul>

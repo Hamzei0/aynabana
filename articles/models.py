@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
@@ -40,6 +41,9 @@ class Article(models.Model):
     class Meta:
         verbose_name = _("article")
         verbose_name_plural = _("articles")
+
+    def get_absolute_url(self):
+        return reverse("article_detail", args=[self.pk])
 
     def __str__(self):
         return f"title: {self.title}"

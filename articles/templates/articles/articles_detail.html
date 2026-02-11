@@ -1,0 +1,153 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}
+  Article
+{% endblock %}
+
+{% block body %}
+  <!-- Single Article -->
+  <section class="pt-5 mt-5">
+    <div class="container">
+      <!-- Article Header -->
+      <div class="glass-card p-5 mb-5 text-center">
+        <h1 class="fw-bold mb-3" style="color: var(--color1);">{{ article.title }}</h1>
+        <p class="opacity-75 mb-0">
+          توسط <strong>{{ article.user }}</strong> | {{ article.datetime_created }} | {{ article.category }}
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+          <!-- Featured Image -->
+          <div class="glass-card overflow-hidden mb-4">
+            <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" />
+          </div>
+
+          <!-- Article Content -->
+          <div class="glass-card p-4 mb-4">{{ article.text|safe }}</div>
+
+          <!-- Related Articles -->
+          <h5 class="fw-bold mb-3">مقالات مرتبط</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="glass-card glass-card-related p-3 d-flex align-items-center gap-3">
+                <img src="{% static 'img/city4-980x777.jpg' %}" alt="کابینت مدرن" class="img-fluid rounded" />
+                <a href="#" class="fw-bold text-white">راهنمای انتخاب کابینت مدرن</a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="glass-card glass-card-related p-3 d-flex align-items-center gap-3">
+                <img src="{% static 'img/city_bright_4.jpg' %}" alt="کناف سقف" class="img-fluid rounded" />
+                <a href="#" class="fw-bold text-white">کناف سقف: ایده‌ها و نکات</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4 sidebar-index">
+          <div class="glass-card p-4">
+            <h5 class="fw-bold mb-3">آخرین مقالات</h5>
+            <ul class="list-unstyled opacity-75">
+              <li class="mb-2">
+                <a href="#" class="text-white">۱۰ نکته برای بازسازی خانه</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white">راهنمای انتخاب کابینت مدرن</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white">کناف سقف: ایده‌ها و نکات</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white">تکنیک‌های نورپردازی داخلی</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass-card p-4 mt-4">
+            <h5 class="fw-bold mb-3">دسته‌بندی‌ها</h5>
+            <ul class="list-unstyled opacity-75">
+              <li class="mb-2">
+                <a href="#" class="text-white">بازسازی</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white">کابینت</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white">کناف</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white">دکوراسیون داخلی</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comments Section -->
+  <section class="mt-5">
+    <div class="container">
+      <div class="glass-card p-5">
+        <h4 class="fw-bold mb-4">نظرات کاربران</h4>
+
+        <!-- Comments List -->
+        <div class="comments-list mb-5">
+          <div class="comment mb-4" data-id="1">
+            <div class="d-flex align-items-center mb-2">
+              <div class="comment-avatar me-3">👤</div>
+              <div>
+                <h6 class="mb-0 fw-bold">کاربر ۱</h6>
+                <small class="opacity-75">6 ژانویه 2026</small>
+              </div>
+            </div>
+            <p class="opacity-75">مقاله بسیار مفیدی بود! نکات بازسازی خانه واقعاً کاربردی هستند.</p>
+            <button class="btn btn-sm btn-glass mt-2 reply-btn">پاسخ</button>
+
+            <!-- Nested Replies -->
+            <div class="replies mt-3 ms-5"></div>
+          </div>
+
+          <div class="comment mb-4" data-id="2">
+            <div class="d-flex align-items-center mb-2">
+              <div class="comment-avatar me-3">👤</div>
+              <div>
+                <h6 class="mb-0 fw-bold">کاربر ۲</h6>
+                <small class="opacity-75">5 ژانویه 2026</small>
+              </div>
+            </div>
+            <p class="opacity-75">اطلاعات خوبی بود، مخصوصاً بخش انتخاب کابینت مدرن.</p>
+            <button class="btn btn-sm btn-glass mt-2 reply-btn">پاسخ</button>
+            <div class="replies mt-3 ms-5"></div>
+          </div>
+        </div>
+
+        <!-- Add Comment Form -->
+        <div class="comment-form">
+          <h5 class="fw-bold mb-3">ثبت نظر جدید</h5>
+          <form id="newCommentForm">
+            <div class="mb-3">
+              <label class="form-label">نام شما</label>
+              <input type="text" class="form-control glass-input" placeholder="نام خود را وارد کنید" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">ایمیل</label>
+              <input type="email" class="form-control glass-input" placeholder="ایمیل شما" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">نظر شما</label>
+              <textarea class="form-control glass-input" rows="4" placeholder="نظر خود را وارد کنید" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-glass">ارسال نظر</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
