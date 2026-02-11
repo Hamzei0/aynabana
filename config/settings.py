@@ -43,11 +43,10 @@ INSTALLED_APPS = [
     # local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
-    "services.apps.ServicesConfig",
     "shop.apps.ShopConfig",
     "cart.apps.CartConfig",
     "persian_translate.apps.PersianTranslateConfig",
-    "archives.apps.ArchivesConfig",
+    "articles.apps.ArticlesConfig",
     "orders.apps.OrdersConfig",
     # third party
     "rosetta",
