@@ -40,36 +40,37 @@
 
                 <div class="col-md-6">
                   <label class="form-label">شهر</label>
-                  <input name="city" type="text" class="form-control glass-input" />
+                  <input name="city" type="text" class="form-control glass-input" required />
                 </div>
 
-                {% comment %} <div class="col-md-6">
+                <div class="col-md-6">
                   <label class="form-label">نوع خدمات</label>
-                  <select class="form-select glass-input text-light bg-dark">
-                    <option>تغییر دکوراسیون</option>
-                    <option>کابینت</option>
-                    <option>کناف‌کاری</option>
-                    <option>بازسازی کامل</option>
+                  <select name="service_type" class="form-select glass-input text-light bg-dark">
+                    <option value="cabinet">کابینت</option>
+                    <option value="tile">کاشی</option>
+                    <option value="knauf">کناف</option>
+                    <option value="decoration">تغییردکوراسیون</option>
+                    <option value="renovation">بازسازی کامل</option>
                   </select>
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label">متراژ تقریبی</label>
-                  <input type="number" class="form-control glass-input" />
+                  <input name="area_size" type="number" class="form-control glass-input" required />
                 </div>
 
                 <div class="col-md-6">
                   <label class="form-label">زمان مورد نظر تماس</label>
-                  <select class="form-select glass-input text-light bg-dark">
-                    <option>صبح</option>
-                    <option>ظهر</option>
-                    <option>عصر</option>
+                  <select name="contact_time" class="form-select glass-input text-light bg-dark">
+                    <option value="morning">صبح</option>
+                    <option value="noon">ظهر</option>
+                    <option value="evening">عصر</option>
                   </select>
-                </div> {% endcomment %}
+                </div>
 
                 <div class="col-12">
                   <label class="form-label">توضیحات تکمیلی</label>
-                  <textarea name="note" rows="4" class="form-control glass-input"></textarea>
+                  <textarea name="note" rows="4" class="form-control glass-input" required></textarea>
                 </div>
               </div>
 

@@ -1,15 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Persian translations for PACKAGE package.
+# Copyright (C) 2026
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-09 23:16+0330\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-02-12 01:43+0330\n"
+"PO-Revision-Date: 2026-02-12 01:50+0330\n"
+"Last-Translator: \n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -17,46 +17,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: models.py:7 models.py:28
+#: models.py:9
+msgid "Cabinet"
+msgstr "کابینت"
+
+#: models.py:10
+msgid "Tile"
+msgstr "کاشی"
+
+#: models.py:11
+msgid "Decoration Change"
+msgstr "تغییر دکوراسیون"
+
+#: models.py:12
+msgid "Knauf"
+msgstr "کناف"
+
+#: models.py:13
+msgid "Full Renovation"
+msgstr "بازسازی کامل"
+
+#: models.py:17
+msgid "Morning"
+msgstr "صبح"
+
+#: models.py:18
+msgid "Noon"
+msgstr "ظهر"
+
+#: models.py:19
+msgid "Evening"
+msgstr "عصر"
+
+#: models.py:22 models.py:54
 msgid "first name"
 msgstr "نام"
 
-#: models.py:8 models.py:29
+#: models.py:23 models.py:55
 msgid "last name"
 msgstr "نام خانوادگی"
 
-#: models.py:10
+#: models.py:25
 msgid "city"
 msgstr "شهر"
 
-#: models.py:11 models.py:33
+#: models.py:27
+msgid "area size"
+msgstr "متراژ تقریبی"
+
+#: models.py:30
+msgid "service type"
+msgstr "نوع خدمات"
+
+#: models.py:34
+msgid "contacttime"
+msgstr "زمان تماس"
+
+#: models.py:37 models.py:59
 msgid "note"
 msgstr "یادداشت"
 
-#: models.py:15
+#: models.py:41
 msgid "datetime created"
 msgstr "تاریخ ایجاد"
 
-#: models.py:19
+#: models.py:45
 msgid "datetime modified"
 msgstr "تاریخ ویرایش"
 
-#: models.py:23
+#: models.py:49
 msgid "Consulting"
 msgstr "مشاوره"
 
-#: models.py:24
+#: models.py:50
 msgid "Consultings"
 msgstr "مشاوره‌ها"
 
-#: models.py:31
+#: models.py:57
 msgid "phone number"
 msgstr "شماره تلفن"
 
-#: models.py:36
+#: models.py:62
 msgid "Contact Us"
 msgstr "تماس با ما"
 
-#: models.py:37
+#: models.py:63
 msgid "ContactUss"
 msgstr "تماس‌ها"
