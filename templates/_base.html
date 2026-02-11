@@ -50,9 +50,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'product_list' %}">محصولات</a>
               </li>
-              <li class="nav-item">
+              {% comment %} <li class="nav-item">
                 <a class="nav-link" href="{% url 'service_list' %}">خدمات</a>
-              </li>
+              </li> {% endcomment %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'contact_us' %}">ارتباط با ما</a>
               </li>
@@ -117,9 +117,9 @@
               <li class="mb-3">
                 <a href="{% url 'product_list' %}" class="footer-link">فروشگاه</a>
               </li>
-              <li class="mb-3">
+              {% comment %} <li class="mb-3">
                 <a href="{% url 'service_list' %}" class="footer-link">بازسازی</a>
-              </li>
+              </li> {% endcomment %}
               <li class="mb-3">
                 <a href="{% url 'contact_us' %}" class="footer-link">ارتباط با ما</a>
               </li>
