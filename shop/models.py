@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
+from ckeditor.fields import RichTextField
+
 import uuid
 
 
@@ -42,8 +44,7 @@ class Products(models.Model):
     short_description = models.CharField(
         max_length=300, verbose_name=_("short description")
     )
-    full_description = models.TextField(verbose_name=_("full description"))
-
+    full_description = RichTextField(verbose_name=_("full description"))
     price = models.PositiveIntegerField(default=0, verbose_name=_("price"))
 
     length = models.DecimalField(

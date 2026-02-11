@@ -24,7 +24,7 @@
                 <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" />
                 <div class="p-4">
                   <h5 class="fw-bold mb-2">{{ article.title }}</h5>
-                  <p class="opacity-75 mb-3">{{ article.text|truncatewords:7 }}</p>
+                  <p class="opacity-75 mb-3">{{ article.short_text|truncatechars:40 }}</p>
                   <a href="{{ article.get_absolute_url }}" class="btn btn-sm btn-glass">مطالعه بیشتر</a>
                 </div>
               </div>

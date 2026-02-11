@@ -5,6 +5,8 @@ from django.contrib.auth import get_user_model
 
 from django.conf import settings
 
+from ckeditor.fields import RichTextField
+
 import uuid
 
 
@@ -29,7 +31,9 @@ class Article(models.Model):
 
     title = models.CharField(max_length=70, verbose_name=_("title"))
     category = models.CharField(max_length=70, verbose_name=_("category"))
-    text = models.TextField(verbose_name=_("text"))
+
+    text = RichTextField(verbose_name=_("text"))
+    short_text = models.CharField(max_length=50, verbose_name=_("short text"))
 
     active = models.BooleanField(
         default=False,
@@ -50,8 +54,8 @@ class Article(models.Model):
     comment_filter = ActiveManager()
 
     class Meta:
-        verbose_name = _("article")
-        verbose_name_plural = _("articles")
+        verbose_name = _("Article")
+        verbose_name_plural = _("Articles")
 
     def get_absolute_url(self):
         return reverse("article_detail", args=[self.pk])
@@ -106,8 +110,8 @@ class CommentArticle(models.Model):
     comment_filter = ActiveManager()
 
     class Meta:
-        verbose_name = _("CommentProduct")
-        verbose_name_plural = _("CommentProducts")
+        verbose_name = _("Comment Article")
+        verbose_name_plural = _("Comments Article")
         ordering = ["-datetime_modified"]
 
     def get_absolute_url(self):

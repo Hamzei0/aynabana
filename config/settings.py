@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     # allauth
     "allauth",
     "allauth.account",
+    # ckeditor
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
