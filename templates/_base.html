@@ -79,9 +79,9 @@
 
               <li class="d-block d-sm-none">
                 <div class="text-center py-2 main-menu-res">
-                  <form action="" class="position-relative search-box">
-                    <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />
-                    <button class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
+                  <form action="{% url 'product_list' %}" method="GET" class="position-relative search-box">
+                    <input type="text" name="search" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder="کابینت mdf ..." />
+                    <button type="submit" class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
                   </form>
                 </div>
               </li>
@@ -89,9 +89,9 @@
           </div>
 
           <div class="col-lg-4 col-sm-6 d-none d-sm-block text-center py-2 main-menu">
-            <form action="" class="position-relative search-box">
-              <input type="text" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder=" کابینت mdf ... " />
-              <button class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
+            <form action="{% url 'product_list' %}" method="GET" class="position-relative search-box">
+              <input type="text" name="search" class="w-100 text-light p-2 rounded-4 border-primary border-end-0 border-start-0" placeholder="کابینت mdf ..." />
+              <button type="submit" class="position-absolute search-btn border-start border-primary"><i class="bi bi-search"></i></button>
             </form>
           </div>
         </div>

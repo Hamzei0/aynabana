@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
 
 from cart.forms import AddToCartProductForm
@@ -13,6 +14,47 @@ class ProductListView(generic.ListView):
     template_name = "shop/product_list.html"
     context_object_name = "products"
     paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.copy()
+        query.pop("page", None)  # حذف page قبلی
+        context["querystring"] = query.urlencode()
+        return context
+
+    def get_queryset(self):
+        queryset = models.Products.objects.filter(active=True)
+
+        # -------------------
+        # فیلتر بر اساس نوع (مدل آینه)
+        # -------------------
+        product_type = self.request.GET.get("model")
+        if product_type:
+            queryset = queryset.filter(type=product_type)
+
+        # -------------------
+        # جستجو
+        # -------------------
+        search = self.request.GET.get("search")
+        if search:
+            queryset = queryset.filter(
+                Q(title__icontains=search) | Q(short_description__icontains=search)
+            )
+
+        # -------------------
+        # مرتب سازی
+        # -------------------
+        ORDERING_OPTIONS = {
+            "cheap": "price",
+            "expensive": "-price",
+            "newest": "-datetime_created",
+        }
+
+        ordering = self.request.GET.get("ordering")
+        if ordering in ORDERING_OPTIONS:
+            queryset = queryset.order_by(ORDERING_OPTIONS[ordering])
+
+        return queryset
 
 
 class ProductDetailView(generic.DetailView):

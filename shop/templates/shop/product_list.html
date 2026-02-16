@@ -21,34 +21,62 @@
 
   <!-- Filters -->
   <section class="py-4">
-    <div class="container">
-      <div class="glass-card p-4">
+  <div class="container">
+    <div class="glass-card p-4">
+
+      <form method="GET">
         <div class="row gy-3 align-items-center">
+
           <div class="col-md-4">
-            <select class="form-select bg-dark text-white border-secondary">
-              <option>همه مدل‌ها</option>
-              <option>دکوراتیو</option>
-              <option>مدرن</option>
-              <option>سفارشی</option>
+            <select name="model"
+                    class="form-select bg-dark text-white border-secondary"
+                    onchange="this.form.submit()">
+              <option value="">همه مدل‌ها</option>
+              <option value="decorative" {% if request.GET.model == "decorative" %}selected{% endif %}>
+                دکوراتیو
+              </option>
+              <option value="modern" {% if request.GET.model == "modern" %}selected{% endif %}>
+                مدرن
+              </option>
+              <option value="custom" {% if request.GET.model == "custom" %}selected{% endif %}>
+                سفارشی
+              </option>
             </select>
           </div>
 
           <div class="col-md-4">
-            <select class="form-select bg-dark text-white border-secondary">
-              <option>مرتب‌سازی</option>
-              <option>ارزان‌ترین</option>
-              <option>گران‌ترین</option>
-              <option>جدیدترین</option>
+            <select name="ordering"
+                    class="form-select bg-dark text-white border-secondary"
+                    onchange="this.form.submit()">
+              <option value="">مرتب‌سازی</option>
+              <option value="cheap" {% if request.GET.ordering == "cheap" %}selected{% endif %}>
+                ارزان‌ترین
+              </option>
+              <option value="expensive" {% if request.GET.ordering == "expensive" %}selected{% endif %}>
+                گران‌ترین
+              </option>
+              <option value="newest" {% if request.GET.ordering == "newest" %}selected{% endif %}>
+                جدیدترین
+              </option>
             </select>
           </div>
 
           <div class="col-md-4">
-            <input type="search" class="form-control bg-dark text-white border-secondary" placeholder="جستجوی آینه..." />
+            <input type="search"
+                   name="search"
+                   value="{{ request.GET.search }}"
+                   class="form-control bg-dark text-white border-secondary"
+                   placeholder="جستجوی آینه..."
+                   onkeydown="if(event.key==='Enter'){this.form.submit();}">
           </div>
+
         </div>
-      </div>
+      </form>
+
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Products -->
   <section class="py-5">
@@ -76,41 +104,53 @@
 
   <!-- Pagination -->
   <section class="pb-5">
-    <div class="container">
-      <div class="d-flex justify-content-center">
-        <nav>
-          <ul class="pagination pagination-glass">
-            <!-- دکمه قبلی -->
-            {% if page_obj.has_previous %}
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <nav>
+        <ul class="pagination pagination-glass">
+
+          <!-- دکمه قبلی -->
+          {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link"
+                 href="?page={{ page_obj.previous_page_number }}{% if querystring %}&{{ querystring }}{% endif %}"
+                 aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          {% endif %}
+
+          <!-- شماره صفحات -->
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <li class="page-item active">
+                <a class="page-link" href="#">{{ num }}</a>
+              </li>
+            {% else %}
               <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                <a class="page-link"
+                   href="?page={{ num }}{% if querystring %}&{{ querystring }}{% endif %}">
+                  {{ num }}
+                </a>
               </li>
             {% endif %}
+          {% endfor %}
 
-            <!-- شماره صفحات -->
-            {% for num in page_obj.paginator.page_range %}
-              {% if page_obj.number == num %}
-                <!-- صفحه فعلی (فعال) -->
-                <li class="page-item active">
-                  <a class="page-link" href="#">{{ num }}</a>
-                </li>
-              {% else %}
-                <!-- صفحات دیگر -->
-                <li class="page-item">
-                  <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-                </li>
-              {% endif %}
-            {% endfor %}
+          <!-- دکمه بعدی -->
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link"
+                 href="?page={{ page_obj.next_page_number }}{% if querystring %}&{{ querystring }}{% endif %}"
+                 aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          {% endif %}
 
-            <!-- دکمه بعدی -->
-            {% if page_obj.has_next %}
-              <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-              </li>
-            {% endif %}
-          </ul>
-        </nav>
-      </div>
+        </ul>
+      </nav>
     </div>
-  </section>
+  </div>
+</section>
+
 {% endblock %}
