@@ -202,29 +202,24 @@
   </section>
 
   <!-- Related Products -->
-  <section class="pb-5">
-    <div class="container">
-      <h3 class="fw-bold mb-4">محصولات مشابه</h3>
+  {% if similar_products %}
+    <section class="pb-5">
+      <div class="container">
+        <h3 class="fw-bold mb-4">محصولات مشابه</h3>
 
-      <div class="row g-4">
-        <div class="col-sm-6 col-lg-3">
-          <div class="glass-card p-3 text-center product-card">
-            <div class="product-mini mb-3">
-              <img src="{% static 'img/آینه-بک-لایت-گرد.jpg' %}" />
+        <div class="row g-4">
+          {% for product in similar_products %}
+            <div class="col-sm-6 col-lg-3">
+              <div class="glass-card p-3 text-center product-card">
+                <div class="product-mini mb-3">
+                  <a href="{{ product.get_absolute_url }}"><img src="{{ product.main_image.url }}" /></a>
+                </div>
+                <small>{{ product.title }}</small>
+              </div>
             </div>
-            <small>آینه بیضی مدرن</small>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-lg-3">
-          <div class="glass-card p-3 text-center product-card">
-            <div class="product-mini mb-3">
-              <img src="{% static 'img/41iGb-VwwoL-min.jpg' %}" />
-            </div>
-            <small>آینه قدی ساده</small>
-          </div>
+          {% endfor %}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  {% endif %}
 {% endblock %}

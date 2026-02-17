@@ -66,6 +66,14 @@ class ProductDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context["comment_form"] = forms.CommentForm()
         context["add_to_cart"] = AddToCartProductForm()
+
+        current_product = self.object
+        similar_products = models.Products.objects.filter(
+            type=current_product.type, active=True
+        ).exclude(pk=current_product.pk)[:3]
+
+        context["similar_products"] = similar_products
+
         return context
 
 
