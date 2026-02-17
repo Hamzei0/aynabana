@@ -31,21 +31,19 @@
           <div class="glass-card p-4 mb-4">{{ article.text|safe }}</div>
 
           <!-- Related Articles -->
-          <h5 class="fw-bold mb-3">مقالات مرتبط</h5>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="glass-card glass-card-related p-3 d-flex align-items-center gap-3">
-                <img src="{% static 'img/city4-980x777.jpg' %}" alt="کابینت مدرن" class="img-fluid rounded" />
-                <a href="#" class="fw-bold text-white">راهنمای انتخاب کابینت مدرن</a>
-              </div>
+          {% if related_articles %}
+            <h5 class="fw-bold mb-3">مقالات مرتبط</h5>
+            <div class="row g-3">
+              {% for rel_article in related_articles %}
+                <div class="col-md-6">
+                  <div class="glass-card glass-card-related p-3 d-flex align-items-center gap-3">
+                    <img src="{{ rel_article.image.url }}" alt="کابینت مدرن" class="img-fluid rounded" />
+                    <a href="{{ rel_article.get_absolute_url }}" class="fw-bold text-white">{{ rel_article.short_text|truncatechars:26 }}</a>
+                  </div>
+                </div>
+              {% endfor %}
             </div>
-            <div class="col-md-6">
-              <div class="glass-card glass-card-related p-3 d-flex align-items-center gap-3">
-                <img src="{% static 'img/city_bright_4.jpg' %}" alt="کناف سقف" class="img-fluid rounded" />
-                <a href="#" class="fw-bold text-white">کناف سقف: ایده‌ها و نکات</a>
-              </div>
-            </div>
-          </div>
+          {% endif %}
         </div>
 
         <!-- Sidebar -->
@@ -53,18 +51,13 @@
           <div class="glass-card p-4">
             <h5 class="fw-bold mb-3">آخرین مقالات</h5>
             <ul class="list-unstyled opacity-75">
-              <li class="mb-2">
-                <a href="#" class="text-white">۱۰ نکته برای بازسازی خانه</a>
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-white">راهنمای انتخاب کابینت مدرن</a>
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-white">کناف سقف: ایده‌ها و نکات</a>
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-white">تکنیک‌های نورپردازی داخلی</a>
-              </li>
+              {% for latest in related_articles %}
+                <li class="mb-2">
+                  <a href="{{ latest.get_absolute_url }}" class="text-white">{{ latest.title }}</a>
+                </li>
+              {% empty %}
+                <p class="text-white">هنوز مقاله‌ای ثبت نشده است.</p>
+              {% endfor %}
             </ul>
           </div>
 

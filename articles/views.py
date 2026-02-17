@@ -17,7 +17,28 @@ class ArticleDetailView(generic.DetailView):
     model = models.Article
     template_name = "articles/articles_detail.html"
     context_object_name = "article"
-    queryset = models.Article.comment_filter.all()
+    queryset = models.Article.article_filter.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        article = self.object
+
+        related_articles = models.Article.objects.filter(
+            category=article.category, active=True
+        ).exclude(pk=article.pk)[:3]
+
+        context["related_articles"] = related_articles
+
+        latest_articles = (
+            models.Article.objects.filter(active=True)
+            .only("title", "pk")
+            .exclude(pk=article.pk)
+            .order_by("-datetime_created")[:4]
+        )
+        context["latest_articles"] = latest_articles
+
+        return context
 
 
 class CommentCreate(generic.CreateView):

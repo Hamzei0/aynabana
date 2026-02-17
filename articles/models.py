@@ -51,7 +51,7 @@ class Article(models.Model):
 
     # manager
     objects = models.Manager()
-    comment_filter = ActiveManager()
+    article_filter = ActiveManager()
 
     class Meta:
         verbose_name = _("Article")
