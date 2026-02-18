@@ -14,26 +14,97 @@
         <p class="opacity-75 mt-3">آخرین مقالات، نکات و راهنمایی‌ها درباره بازسازی، دکوراسیون و طراحی داخلی</p>
       </div>
 
+        <section class="py-4">
+  <div class="container">
+    <div class="glass-card p-4">
+
+      <form method="GET">
+        <div class="row gy-3 align-items-center">
+
+          <div class="col-md-4">
+            <!-- نام مدل باید همان باشد که در ویو با get دریافت کردید (model) -->
+            <select name="category"
+                    class="form-select bg-dark text-white border-secondary"
+                    onchange="this.form.submit()">
+              <option value="">همه مقالات</option>
+              <option value="Renovation" {% if request.GET.category == "Renovation" %}selected{% endif %}>
+                بازسازی
+              </option>
+              <option value="Cabinet" {% if request.GET.category == "Cabinet" %}selected{% endif %}>
+                کابینت
+              </option>
+              <option value="Knauf" {% if request.GET.category == "Knauf" %}selected{% endif %}>
+                کناف
+              </option>
+              <option value="InteriorDesign" {% if request.GET.category == "InteriorDesign" %}selected{% endif %}>
+                دکوراسیون داخلی
+              </option>
+              <option value="Other" {% if request.GET.category == "Other" %}selected{% endif %}>
+                سایر
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <select name="ordering"
+                    class="form-select bg-dark text-white border-secondary"
+                    onchange="this.form.submit()">
+              <option value="">مرتب‌سازی</option>
+              <option value="newest" {% if request.GET.ordering == "newest" %}selected{% endif %}>
+                جدیدترین
+              </option>
+              <!-- اصلاح شده: مقدار expensive حذف شد و oldest اضافه شد -->
+              <option value="oldest" {% if request.GET.ordering == "oldest" %}selected{% endif %}>
+                قدیمی‌ترین
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <input type="search"
+                   name="search"
+                   value="{{ request.GET.search }}"
+                   class="form-control bg-dark text-white border-secondary"
+                   placeholder="جستجوی مقاله..."
+                   onkeydown="if(event.key==='Enter'){this.form.submit();}">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
       <!-- Blog Grid -->
       <div class="row g-4">
         <!-- Article Card -->
         {% for article in articles %}
-          {% if article.active %}
-            <div class="col-md-6 col-lg-4">
+          <!-- حذف شد: if article.active (چون در ویو فیلتر شده) -->
+          <div class="col-md-6 col-lg-4">
               <div class="blog-card glass-card overflow-hidden">
-                <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" />
+                  <!-- اصلاح شده: اضافه کردن شرط وجود عکس برای جلوگیری از کرش -->
+                  {% if article.image %}
+                      <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" />
+                  {% else %}
+                      <!-- تصویر پیش‌فرض در صورت نبود عکس -->
+                      <img src="/media/default_article.jpg" class="img-fluid" alt="No Image" />
+                  {% endif %}
+                  
                 <div class="p-4">
                   <h5 class="fw-bold mb-2">{{ article.title }}</h5>
-                  <p class="opacity-75 mb-3">{{ article.short_text|truncatechars:40 }}</p>
+                  <p class="opacity-75 mb-3">{{ article.short_text|truncatechars:70 }}</p>
                   <a href="{{ article.get_absolute_url }}" class="btn btn-sm btn-glass">مطالعه بیشتر</a>
                 </div>
               </div>
             </div>
-          {% endif %}
+        {% empty %}
+            <div class="col-12 text-center text-muted">
+                <p>مقاله‌ای یافت نشد.</p>
+            </div>
         {% endfor %}
       </div>
 
-      <!-- Pagination -->
       <!-- Pagination -->
       <section class="pb-5">
         <div class="container">
@@ -43,7 +114,8 @@
                 <!-- دکمه قبلی -->
                 {% if page_obj.has_previous %}
                   <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                    <!-- اصلاح شده: اضافه شدن querystring برای حفظ فیلترها -->
+                    <a class="page-link" href="?{{ querystring }}&page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
                   </li>
                 {% endif %}
 
@@ -57,7 +129,8 @@
                   {% else %}
                     <!-- صفحات دیگر -->
                     <li class="page-item">
-                      <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        <!-- اصلاح شده: اضافه شدن querystring -->
+                      <a class="page-link" href="?{{ querystring }}&page={{ num }}">{{ num }}</a>
                     </li>
                   {% endif %}
                 {% endfor %}
@@ -65,7 +138,8 @@
                 <!-- دکمه بعدی -->
                 {% if page_obj.has_next %}
                   <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                    <!-- اصلاح شده: اضافه شدن querystring -->
+                    <a class="page-link" href="?{{ querystring }}&page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
                   </li>
                 {% endif %}
               </ul>

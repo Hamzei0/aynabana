@@ -1,7 +1,8 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
+
+from django.conf import settings
 
 from ckeditor.fields import RichTextField
 
@@ -135,7 +136,7 @@ class CommentProduct(models.Model):
         verbose_name=_("product"),
     )
     author = models.ForeignKey(
-        get_user_model(),
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="product_comments",
         verbose_name=_("author"),

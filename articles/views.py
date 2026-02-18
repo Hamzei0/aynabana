@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.views import generic
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 from . import models
 from . import forms
@@ -11,6 +11,48 @@ class ArticlesListView(generic.ListView):
     template_name = "articles/articles_list.html"
     context_object_name = "articles"
     paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.copy()
+        query.pop("page", None)  # حذف page قبلی
+        context["querystring"] = query.urlencode()
+        return context
+
+    def get_queryset(self):
+        queryset = models.Article.objects.filter(active=True)
+
+        # -------------------
+        # فیلتر بر اساس نوع (مدل آینه)
+        # -------------------
+        category = self.request.GET.get("category")
+        if category:
+            queryset = queryset.filter(category=category)
+
+        # -------------------
+        # جستجو
+        # -------------------
+        search = self.request.GET.get("search")
+        if search:
+            queryset = queryset.filter(
+                Q(title__icontains=search) | Q(short_text__icontains=search)
+            )
+
+        # -------------------
+        # مرتب سازی
+        # -------------------
+        ORDERING_OPTIONS = {
+            "oldest": "datetime_created",
+            "newest": "-datetime_created",
+        }
+
+        ordering = self.request.GET.get("ordering")
+        if ordering in ORDERING_OPTIONS:
+            queryset = queryset.order_by(ORDERING_OPTIONS[ordering])
+        else:
+            queryset = queryset.order_by(ORDERING_OPTIONS["newest"])
+
+        return queryset
 
 
 class ArticleDetailView(generic.DetailView):

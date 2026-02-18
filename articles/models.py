@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth import get_user_model
 
 from django.conf import settings
 
@@ -10,7 +9,7 @@ from ckeditor.fields import RichTextField
 import uuid
 
 
-def Article_image_upload_to(instance, filename):
+def article_image_upload_to(instance, filename):
     return f"article/main_image/{uuid.uuid4()}_{filename}"
 
 
@@ -21,16 +20,26 @@ class ActiveManager(models.Manager):
 
 class Article(models.Model):
 
+    CATEGORY_CHOICES = [
+        ("Renovation", _("Renovation")),
+        ("Cabinet", _("Cabinet")),
+        ("Knauf", _("Knauf")),
+        ("InteriorDesign", _("Interior Design")),
+        ("Other", _("Other")),
+    ]
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_("user")
     )
 
     image = models.ImageField(
-        upload_to=Article_image_upload_to, blank=True, verbose_name=_("image")
+        upload_to=article_image_upload_to, blank=True, verbose_name=_("image")
     )
 
     title = models.CharField(max_length=70, verbose_name=_("title"))
-    category = models.CharField(max_length=70, verbose_name=_("category"))
+    category = models.CharField(
+        max_length=20, choices=CATEGORY_CHOICES, verbose_name=_("category")
+    )
 
     text = RichTextField(verbose_name=_("text"))
     short_text = models.CharField(max_length=50, verbose_name=_("short text"))
@@ -80,7 +89,7 @@ class CommentArticle(models.Model):
         verbose_name=_("article"),
     )
     author = models.ForeignKey(
-        get_user_model(),
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="article_comments",
         verbose_name=_("author"),

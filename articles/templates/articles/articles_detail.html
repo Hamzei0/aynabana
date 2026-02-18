@@ -51,7 +51,7 @@
           <div class="glass-card p-4">
             <h5 class="fw-bold mb-3">آخرین مقالات</h5>
             <ul class="list-unstyled opacity-75">
-              {% for latest in related_articles %}
+              {% for latest in latest_articles %}
                 <li class="mb-2">
                   <a href="{{ latest.get_absolute_url }}" class="text-white">{{ latest.title }}</a>
                 </li>
@@ -64,17 +64,29 @@
           <div class="glass-card p-4 mt-4">
             <h5 class="fw-bold mb-3">دسته‌بندی‌ها</h5>
             <ul class="list-unstyled opacity-75">
+              <!-- بازسازی -->
               <li class="mb-2">
-                <a href="#" class="text-white">بازسازی</a>
+                <a href="{% url 'articles_list' %}?category=Renovation" class="text-white {% if request.GET.category == 'Renovation' %}text-warning fw-bold{% endif %}">بازسازی</a>
               </li>
+
+              <!-- کابینت -->
               <li class="mb-2">
-                <a href="#" class="text-white">کابینت</a>
+                <a href="{% url 'articles_list' %}?category=Cabinet" class="text-white {% if request.GET.category == 'Cabinet' %}text-warning fw-bold{% endif %}">کابینت</a>
               </li>
+
+              <!-- کناف -->
               <li class="mb-2">
-                <a href="#" class="text-white">کناف</a>
+                <a href="{% url 'articles_list' %}?category=Knauf" class="text-white {% if request.GET.category == 'Knauf' %}text-warning fw-bold{% endif %}">کناف</a>
               </li>
+
+              <!-- دکوراسیون داخلی -->
               <li class="mb-2">
-                <a href="#" class="text-white">دکوراسیون داخلی</a>
+                <a href="{% url 'articles_list' %}?category=InteriorDesign" class="text-white {% if request.GET.category == 'InteriorDesign' %}text-warning fw-bold{% endif %}">دکوراسیون داخلی</a>
+              </li>
+
+              <!-- سایر -->
+              <li class="mb-2">
+                <a href="{% url 'articles_list' %}?category=Other" class="text-white {% if request.GET.category == 'Other' %}text-warning fw-bold{% endif %}">سایر</a>
               </li>
             </ul>
           </div>

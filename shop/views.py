@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views import generic
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
@@ -53,6 +52,8 @@ class ProductListView(generic.ListView):
         ordering = self.request.GET.get("ordering")
         if ordering in ORDERING_OPTIONS:
             queryset = queryset.order_by(ORDERING_OPTIONS[ordering])
+        else:
+            queryset = queryset.order_by(ORDERING_OPTIONS["newest"])
 
         return queryset
 
