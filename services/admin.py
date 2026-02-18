@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from . import models
+
+
+@admin.register(models.Service)
+class ServicesAdmin(admin.ModelAdmin):
+    list_display = ["service_type", "image"]
