@@ -95,72 +95,24 @@
       <!-- Filter -->
       <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap">
         <button class="btn btn-glass active filter-btn" data-filter="all">همه</button>
-        <button class="btn btn-glass filter-btn" data-filter="decor">دکوراسیون</button>
+        <button class="btn btn-glass filter-btn" data-filter="decoration">دکوراسیون</button>
         <button class="btn btn-glass filter-btn" data-filter="cabinet">کابینت</button>
-        <button class="btn btn-glass filter-btn" data-filter="kanaf">کناف</button>
+        <button class="btn btn-glass filter-btn" data-filter="knauf">کناف</button>
       </div>
 
       <!-- Grid -->
       <div class="row g-4 portfolio-grid">
-        <div class="col-md-4 portfolio-item decor">
-          <div class="portfolio-card">
-            <img src="img/city.jpg" class="img-fluid" />
-            <div class="portfolio-overlay">
-              <h6>تغییر دکوراسیون منزل</h6>
-              <span>تهران</span>
+        {% for service in services %}
+          <div class="col-md-4 portfolio-item {{ service.service_type }}">
+            <div class="portfolio-card">
+              <img src="{{ service.image.url }}" class="img-fluid" />
+              <div class="portfolio-overlay">
+                <h6>{{ service.get_service_type_display }}</h6>
+                <span>{{ service.datetime_created|date:'Y-m-d' }}</span>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="col-md-4 portfolio-item cabinet">
-          <div class="portfolio-card">
-            <img src="img/city_bright_8 (1).jpg" class="img-fluid" />
-            <div class="portfolio-overlay">
-              <h6>کابینت مدرن</h6>
-              <span>کرج</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 portfolio-item kanaf">
-          <div class="portfolio-card">
-            <img src="img/city4-980x777.jpg" class="img-fluid" />
-            <div class="portfolio-overlay">
-              <h6>کناف سقف</h6>
-              <span>لواسان</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 portfolio-item decor">
-          <div class="portfolio-card">
-            <img src="img/city_bright_3.jpg" class="img-fluid" />
-            <div class="portfolio-overlay">
-              <h6>بازسازی پذیرایی</h6>
-              <span>تهران</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 portfolio-item cabinet">
-          <div class="portfolio-card">
-            <img src="img/decor_grey-525x328.jpg" class="img-fluid" />
-            <div class="portfolio-overlay">
-              <h6>کابینت کلاسیک</h6>
-              <span>شهریار</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 portfolio-item kanaf">
-          <div class="portfolio-card">
-            <img src="img/decor2-525x328.jpg" class="img-fluid" />
-            <div class="portfolio-overlay">
-              <h6>نورپردازی کناف</h6>
-              <span>پردیس</span>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
 
       <!-- CTA -->
