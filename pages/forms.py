@@ -12,4 +12,12 @@ class ContactUsForm(forms.ModelForm):
 class ConsultingForm(forms.ModelForm):
     class Meta:
         model = models.Consulting
-        fields = ["first_name", "last_name", "city", "note"]
+        fields = [
+            "first_name",
+            "last_name",
+            "city",
+            "area_size",
+            "service_type",
+            "contact_time",
+            "note",
+        ]
