@@ -32,10 +32,13 @@ urlpatterns += i18n_patterns(
     path("shop/", include("shop.urls")),
     path("accounts/", include("allauth.urls")),
     path("accounts/", include("accounts.urls")),
-    path("cart/", include("cart.urls")),
     path("articles/", include("articles.urls")),
-    path("order/", include("orders.urls")),
     path("services/", include("services.urls")),
+    # order & cart_________________________________
+    path("cart/", include("cart.urls")),
+    path("order/", include("orders.urls")),
+    # for payment
+    path("payment/", include("payment.urls")),
     prefix_default_language=False,
 )
 

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "articles.apps.ArticlesConfig",
     "orders.apps.OrdersConfig",
     "services.apps.ServicesConfig",
+    "payment.apps.PaymentConfig",
     # third party
     "rosetta",
     # allauth

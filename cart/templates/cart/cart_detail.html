@@ -71,9 +71,9 @@
               <span class="fw-bold total-price">{{ cart.get_total_price|intcomma:False|translate_number }} تومان</span>
             </div>
 
-            <button class="btn btn-glass w-100 mt-3">ادامه فرایند خرید</button>
+            <a href="{% url 'order_create' %}" class="btn btn-glass w-100 mt-3">ادامه فرایند خرید</a>
 
-            <a href="#" class="d-block text-center mt-3 opacity-75">ادامه خرید</a>
+            <a href="{% url 'order_create' %}" class="d-block text-center mt-3 opacity-75">ادامه خرید</a>
           </div>
         </div>
       </div>
