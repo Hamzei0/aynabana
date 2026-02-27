@@ -17,6 +17,10 @@ class Order(models.Model):
     address = models.CharField(max_length=300, verbose_name=_("address"))
     order_notes = models.TextField(blank=True, verbose_name=_("order notes"))
 
+    authority = models.CharField(
+        max_length=255, blank=True, verbose_name=_("authority")
+    )
+
     datetime_created = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_("datetime created"),
