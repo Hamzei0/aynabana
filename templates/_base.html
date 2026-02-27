@@ -98,6 +98,127 @@
       </nav>
     </header>
 
+    {% if messages %}
+      <style>
+        /* کانتینر اصلی پیام */
+        .message-wrapper {
+          position: relative;
+          overflow: hidden; /* جلوگیری از بیرون زدن خط */
+          transition: opacity 0.5s ease; /* زمان محو شدن نرم */
+        }
+        
+        /* استایل خط لودینگ */
+        .progress-line {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 4px;
+          background-color: rgba(255, 255, 255, 0.6); /* رنگ سفید شفاف */
+          width: 100%;
+          /* تغییر: انیمیشن ۶ ثانیه‌ای */
+          animation: shrink-line 6s linear forwards;
+        }
+        
+        /* انیمیشن کم شدن خط */
+        @keyframes shrink-line {
+          from {
+            width: 100%;
+          }
+          to {
+            width: 0%;
+          }
+        }
+        
+        /* استایل دکمه ضربدر */
+        .close-btn {
+          cursor: pointer;
+          opacity: 0.7;
+          transition: opacity 0.2s;
+          font-size: 1.2rem;
+          line-height: 1;
+          background: none;
+          border: none;
+          color: white;
+          padding: 0;
+          margin-right: 10px; /* فاصله از متن */
+        }
+        .close-btn:hover {
+          opacity: 1;
+        }
+      </style>
+
+      <div class="position-absolute w-100" style="top: 10%; right: 0; z-index: 9999;">
+        {% for message in messages %}
+          <div class="glass-card border-start border-3 px-3 py-2 mb-2 text-white message-wrapper
+            {% if message.tags == 'success' %}
+              
+              border-success bg-success
+
+
+            {% elif message.tags == 'error' %}
+              
+              border-danger bg-danger
+
+
+            {% elif message.tags == 'warning' %}
+              
+              border-warning bg-warning
+
+
+            {% else %}
+              
+              border-primary bg-primary
+
+            {% endif %}">
+            <!-- استفاده از Flexbox برای قرار دادن متن و ضربدر در دو طرف -->
+            <div class="d-flex justify-content-between align-items-center pb-1">
+              <span>{{ message }}</span>
+              <button class="close-btn">&times;</button>
+            </div>
+
+            <!-- خط لودینگ -->
+            <div class="progress-line"></div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const messages = document.querySelectorAll('.message-wrapper')
+        
+          messages.forEach(function (msg) {
+            const closeBtn = msg.querySelector('.close-btn')
+        
+            // تابعی برای حذف پیام (استفاده برای بستن خودکار و دستی)
+            const removeMessage = () => {
+              msg.style.opacity = '0'
+              setTimeout(() => {
+                msg.remove()
+              }, 500) // صبر کردن برای کامل شدن انیمیشن محو شدن
+            }
+        
+            // ۱. تنظیم تایمر محو شدن (۵.۵ ثانیه تا وقتی خط داره تموم میشه پیام محو شه)
+            let fadeTimer = setTimeout(removeMessage, 5500)
+        
+            // ۲. تنظیم تایمر حذف نهایی (۶ ثانیه - تضمین حذف حتی اگر محو شدن دیر افتاد)
+            let removeTimer = setTimeout(() => {
+              msg.remove()
+            }, 6000)
+        
+            // ۳. رویداد کلیک روی دکمه ضربدر
+            closeBtn.addEventListener('click', function () {
+              // لغو کردن تایمرهای خودکار (چون کاربر خودش بست)
+              clearTimeout(fadeTimer)
+              clearTimeout(removeTimer)
+        
+              // اجرای سریع تابع حذف
+              removeMessage()
+            })
+          })
+        })
+      </script>
+    {% endif %}
+
     {% block body %}
 
     {% endblock %}

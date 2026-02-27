@@ -1,5 +1,7 @@
 from django.views import generic
 from django.shortcuts import get_object_or_404
+from django.utils.translation import gettext as _
+from django.contrib import messages
 from django.db.models import Q
 
 from . import models
@@ -104,4 +106,12 @@ class CommentCreate(generic.CreateView):
 
         obj.article = article
 
+        messages.success(self.request, _("Your comment was submitted successfully."))
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(
+            self.request,
+            _("There was an error submitting your comment. Please try again."),
+        )
+        return super().form_invalid(form)
