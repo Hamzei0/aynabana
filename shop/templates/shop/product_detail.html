@@ -214,7 +214,7 @@
                 <div class="product-mini mb-3">
                   <a href="{{ product.get_absolute_url }}"><img src="{{ product.main_image.url }}" /></a>
                 </div>
-                <small>{{ product.title }}</small>
+                <a href="{{ product.get_absolute_url }}" class="fw-bold text-white">{{ product.title }}</a>
               </div>
             </div>
           {% endfor %}

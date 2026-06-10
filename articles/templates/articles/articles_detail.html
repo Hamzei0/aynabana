@@ -37,7 +37,7 @@
               {% for rel_article in related_articles %}
                 <div class="col-md-6">
                   <div class="glass-card glass-card-related p-3 d-flex align-items-center gap-3">
-                    <img src="{{ rel_article.image.url }}" alt="کابینت مدرن" class="img-fluid rounded" />
+                    <a href="{{ rel_article.get_absolute_url }}"><img src="{{ rel_article.image.url }}" alt="کابینت مدرن" class="img-fluid rounded" /></a>
                     <a href="{{ rel_article.get_absolute_url }}" class="fw-bold text-white">{{ rel_article.short_text|truncatechars:26 }}</a>
                   </div>
                 </div>
