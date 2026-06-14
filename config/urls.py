@@ -27,7 +27,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path("admin/", admin.site.urls),
+    path("my_secret_panel/", admin.site.urls),
     path("", include("pages.urls")),
     path("shop/", include("shop.urls")),
     path("accounts/", include("allauth.urls")),

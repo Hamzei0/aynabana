@@ -13,8 +13,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 
-import os
+from decouple import config, Csv
 
+import os
 
 load_dotenv()
 
@@ -26,12 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-xh*fc$v5$$2b#!h+ysobj=voen3*r!o4&ha90o+oy$d=ndflw-"
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 
 
 # Application definition
@@ -103,7 +104,14 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT", cast=int)
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
+DEFAULT_FROM_EMAIL = config("EMAIL_HOST_USER")
 
 WSGI_APPLICATION = "config.wsgi.application"
 
@@ -113,12 +121,15 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "myprojectdb",
-        "USER": "myprojectuser",
-        "PASSWORD": "mypassword",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "ENGINE": config("DB_ENGINE"),
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST", default="localhost"),
+        "PORT": config("DB_PORT", default="5432"),
+        "OPTIONS": {
+            "charset": "utf8mb4",
+        },
     }
 }
 
@@ -168,11 +179,6 @@ SITE_ID = 1
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -190,10 +196,28 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_LOGIN_METHODS = {"username", "email"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 
-# Media
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = "/media/"
-
-
 # zarinpal
 ZARINPAL_MERCHANT_ID = os.getenv("DJANGO_ZARINPAL_MERCHANT_ID")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = "/home/aynabana/public_html/media/"
+
+STATIC_URL = "/static/"
+STATIC_ROOT = "/home/aynabana/public_html/static/"
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://aynabana.ir",
+    "http://www.aynabana.ir",
+    "https://aynabana.ir",
+    "https://www.aynabana.ir",
+]
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

@@ -90,7 +90,7 @@
                 <img src="{{ product.main_image.url }}" alt="" class="product-img mb-3" />
               {% endif %}
               <h5 class="fw-bold">{{ product.title }}</h5>
-              <p class="opacity-75 small">{{ product.short_description }}</p>
+              <p class="opacity-75 small">{{ product.short_description|truncatewords:15 }}</p>
               <div class="d-flex justify-content-between align-items-center mt-3">
                 <span class="fw-bold">{{ product.price|intcomma:False|translate_number }}</span>
                 <a href="{{ product.get_absolute_url }}" class="btn btn-glass btn-sm">مشاهده</a>
