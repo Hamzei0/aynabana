@@ -65,22 +65,22 @@
   </section>
 
   <!-- Hero -->
-  <section class="vh-100 d-flex align-items-center">
+  <section class="my-5 d-flex align-items-center">
     <div class="container">
       <div class="row align-items-center gy-5">
         <div class="col-12">
-          <div class="glass-card p-5">
+          <div class="glass-card px-3 py-5 p-md-5">
             <h1 class="fw-bold mb-3">فروش تخصصی آینه و خدمات بازسازی</h1>
             <p class="opacity-75">طراحی، فروش و اجرای انواع آینه‌های دکوراتیو همراه با خدمات حرفه‌ای بازسازی فضا</p>
 
             <div class="d-flex gap-3 mt-4 flex-wrap">
-              <a href="{% url 'product_list' %}" class="btn btn-glass">ورود به فروشگاه</a>
+              <a href="{% url 'services' %}" class="btn btn-glass">خدمات ما</a>
               <a href="{% url 'consulting' %}" class="btn btn-outline-light rounded-pill px-4">مشاوره بازسازی</a>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6 position-absolute end-0 text-center">
+        <div class="col-lg-6 position-absolute end-0 text-center d-none d-lg-block">
           <div class="glass-blob mx-auto"></div>
         </div>
       </div>
@@ -88,9 +88,9 @@
   </section>
 
   <!-- Store Section -->
-  <section class="py-5">
+  <section class="my-5">
     <div class="container">
-      <div class="glass-card p-5">
+      <div class="glass-card px-3 py-5 p-md-5">
         <div class="row align-items-center gy-4">
           <div class="col-md-6">
             <h2 class="fw-bold">فروشگاه آینه</h2>
@@ -106,14 +106,14 @@
   </section>
 
   <!-- Renovation -->
-  <section class="py-5">
+  <section class="my-5">
     <div class="container">
-      <div class="glass-card p-5">
+      <div class="glass-card px-3 py-5">
         <div class="row align-items-center gy-4 flex-md-row-reverse">
           <div class="col-md-6">
             <h2 class="fw-bold">خدمات بازسازی</h2>
             <p class="opacity-75 mt-3">بازسازی صفر تا صد منازل و فضاهای تجاری با طراحی مدرن و متریال باکیفیت</p>
-            {% comment %} <a href="{% url 'service_list' %}" class="btn btn-glass mt-3">درخواست بازدید</a> {% endcomment %}
+            <a href="{% url 'consulting' %}" class="btn btn-glass mt-3">درخواست مشاوره</a>
           </div>
           <div class="col-md-6 text-center">
             <img src="{% static 'img/repair.png' %}" alt="" class="glass-img-placeholder" />
@@ -124,7 +124,7 @@
   </section>
 
   <!-- Location -->
-  <section class="py-5">
+  <section class="my-5">
     <div class="container">
       <div class="glass-card p-5 row">
         <div class="col-md-6">
@@ -148,7 +148,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="py-5">
+  <section class="my-5">
     <div class="container">
       <div class="glass-card p-5">
         <div class="text-center mb-5">

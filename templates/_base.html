@@ -40,7 +40,7 @@
                 </li>
               {% else %}
                 <li class="nav-item d-block d-lg-none">
-                  <a href="{% url 'account_login' %}" class="nav-link"><span><i class="bi bi-box-arrow-in-right"></i></span></a>
+                  <a href="{% url 'account_login' %}" class="nav-link"><span><i class="bi bi-box-arrow-in-right"></i></span> &nbsp; ورود</a>
                 </li>
               {% endif %}
 
@@ -49,6 +49,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'product_list' %}">محصولات</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'articles_list' %}">مقالات</a>
               </li>
               {% comment %} <li class="nav-item">
                 <a class="nav-link" href="{% url 'service_list' %}">خدمات</a>
@@ -152,22 +155,30 @@
           <div class="glass-card border-start border-3 px-3 py-2 mb-2 text-white message-wrapper
             {% if message.tags == 'success' %}
               
+              
               border-success bg-success
+
 
 
             {% elif message.tags == 'error' %}
               
+              
               border-danger bg-danger
+
 
 
             {% elif message.tags == 'warning' %}
               
+              
               border-warning bg-warning
+
 
 
             {% else %}
               
+              
               border-primary bg-primary
+
 
             {% endif %}">
             <!-- استفاده از Flexbox برای قرار دادن متن و ضربدر در دو طرف -->
@@ -224,7 +235,7 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="mt-5 pt-5 pb-3 glass-footer">
+    <footer class="mt-5 pt-5 p-3 glass-footer">
       <div class="container">
         <div class="row gy-4">
           <div class="col-md-4">
@@ -245,7 +256,10 @@
                 <a href="{% url 'contact_us' %}" class="footer-link">ارتباط با ما</a>
               </li>
               <li class="mb-3">
-                <a href="{% url 'privacy_policy' %}" class="footer-link">قوانین</a>
+                <a href="{% url 'about_us' %}" class="footer-link">درباره ما</a>
+              </li>
+              <li class="mb-3">
+                <a href="{% url 'privacy_policy' %}" class="footer-link">قوانین و مقررات</a>
               </li>
             </ul>
           </div>

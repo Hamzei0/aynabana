@@ -54,6 +54,10 @@ body {
     --color2: #f8e71c;
 }
 
+input::placeholder {
+    color: #fff !important;
+}
+
 .modal-backdrop {
     z-index: 1;
 }
@@ -236,7 +240,7 @@ body {
     font-size: 140px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 24px;
-    padding: 60px;
+    padding: 40px;
 }
 
 .thumb {
@@ -636,6 +640,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 30px;
+    margin: 0 auto;
 }
 
 .user-menu .nav-link {

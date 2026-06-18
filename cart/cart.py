@@ -64,6 +64,8 @@ class Cart:
             cart[str(product.id)]["product_obj"] = product
 
         for item in cart.values():
+            if "product_obj" not in item:
+                continue
             item["total_price"] = item["product_obj"].price * item["quantity"]
             yield item
 
@@ -84,7 +86,9 @@ class Cart:
         """
 
         return sum(
-            item["quantity"] * item["product_obj"].price for item in self.cart.values()
+            item["quantity"] * item["product_obj"].price
+            for item in self.cart.values()
+            if "product_obj" in item
         )
 
     def is_empty(self):
